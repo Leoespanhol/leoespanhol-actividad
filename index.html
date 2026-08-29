@@ -79,6 +79,15 @@
             text-transform: uppercase;
         }
 
+        /* Student Identification Card */
+        .student-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--primary-gold);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+        }
+
         /* Reading Section */
         .article-card {
             background-color: var(--card-bg);
@@ -174,7 +183,7 @@
             transition: border-color 0.3s;
         }
 
-        textarea:focus, input[type="text"]:focus {
+        textarea:focus, input[type="text"]:focus, input[type="email"]:focus {
             outline: none;
             border-color: var(--primary-gold);
         }
@@ -214,7 +223,7 @@
             height: 18px;
         }
 
-        input[type="text"] {
+        input[type="text"], input[type="email"] {
             width: 100%;
             background-color: var(--bg-dark);
             border: 1px solid var(--border-color);
@@ -315,25 +324,37 @@
         </div>
     </article>
 
-    <!-- Interactive Activity Form -->
-    <form id="activityForm" onsubmit="event.preventDefault();">
+    <!-- Interactive Activity Form with Formspree Integration -->
+    <form id="activityForm" action="https://formspree.io/f/xkjngbpr" method="POST">
         
+        <!-- Identificación del Estudiante -->
+        <div class="student-card">
+            <div class="question-group" style="margin-bottom: 12px;">
+                <label for="nombre_estudiante">Nombre Completo del Estudiante *</label>
+                <input type="text" id="nombre_estudiante" name="Nombre del Estudiante" required placeholder="Escriba su nombre completo aquí...">
+            </div>
+            <div class="question-group" style="margin-bottom: 0;">
+                <label for="email_estudiante">Correo Electrónico *</label>
+                <input type="email" id="email_estudiante" name="_replyto" required placeholder="Escriba su correo electrónico...">
+            </div>
+        </div>
+
         <!-- Part 1 -->
         <h2 class="section-title">1. Comprensión y Reflexión</h2>
         <div class="activity-card">
             <div class="question-group">
                 <label for="p1_a">a) ¿A qué nos referimos cuando hablamos de empresa según el texto?</label>
-                <textarea id="p1_a" placeholder="Escriba su respuesta u opinión..."></textarea>
+                <textarea id="p1_a" name="1a_Que_es_empresa" required placeholder="Escriba su respuesta u opinión..."></textarea>
             </div>
 
             <div class="question-group">
                 <label for="p1_b">b) ¿Qué es para usted un negocio?</label>
-                <textarea id="p1_b" placeholder="Escriba su respuesta u opinión..."></textarea>
+                <textarea id="p1_b" name="1b_Que_es_negocio" required placeholder="Escriba su respuesta u opinión..."></textarea>
             </div>
 
             <div class="question-group">
                 <label for="p1_c">c) Comenten estas cuestiones en clase: ¿A qué conclusiones han llegado?</label>
-                <textarea id="p1_c" placeholder="Escriba sus conclusiones..."></textarea>
+                <textarea id="p1_c" name="1c_Conclusiones" required placeholder="Escriba sus conclusiones..."></textarea>
             </div>
         </div>
 
@@ -346,60 +367,60 @@
             <div class="item-row">
                 <div class="item-text">a. Un profesor da clase online por Skype.</div>
                 <div class="options-container">
-                    <label class="option-label"><input type="radio" name="item_a" value="E"> Empresa (E)</label>
-                    <label class="option-label"><input type="radio" name="item_a" value="N"> Negocio (N)</label>
+                    <label class="option-label"><input type="radio" name="2a_Profesor_Skype_Opcion" value="Empresa (E)" required> Empresa (E)</label>
+                    <label class="option-label"><input type="radio" name="2a_Profesor_Skype_Opcion" value="Negocio (N)"> Negocio (N)</label>
                 </div>
-                <input type="text" placeholder="Argumente su respuesta (ej. falta de estructura formal, ocasionalidad, etc.)">
+                <input type="text" name="2a_Profesor_Skype_Argumento" required placeholder="Argumente su respuesta (ej. falta de estructura formal, ocasionalidad, etc.)">
             </div>
 
             <!-- Item B -->
             <div class="item-row">
                 <div class="item-text">b. Unos amigos desarrollan una aplicación para saber quién es el artista de cada estatua de Europa.</div>
                 <div class="options-container">
-                    <label class="option-label"><input type="radio" name="item_b" value="E"> Empresa (E)</label>
-                    <label class="option-label"><input type="radio" name="item_b" value="N"> Negocio (N)</label>
+                    <label class="option-label"><input type="radio" name="2b_App_Estatuas_Opcion" value="Empresa (E)" required> Empresa (E)</label>
+                    <label class="option-label"><input type="radio" name="2b_App_Estatuas_Opcion" value="Negocio (N)"> Negocio (N)</label>
                 </div>
-                <input type="text" placeholder="Argumente su respuesta...">
+                <input type="text" name="2b_App_Estatuas_Argumento" required placeholder="Argumente su respuesta...">
             </div>
 
             <!-- Item C -->
             <div class="item-row">
                 <div class="item-text">c. Un mecánico repara coches antiguos para venderlos a coleccionistas.</div>
                 <div class="options-container">
-                    <label class="option-label"><input type="radio" name="item_c" value="E"> Empresa (E)</label>
-                    <label class="option-label"><input type="radio" name="item_c" value="N"> Negocio (N)</label>
+                    <label class="option-label"><input type="radio" name="2c_Mecanico_Coches_Opcion" value="Empresa (E)" required> Empresa (E)</label>
+                    <label class="option-label"><input type="radio" name="2c_Mecanico_Coches_Opcion" value="Negocio (N)"> Negocio (N)</label>
                 </div>
-                <input type="text" placeholder="Argumente su respuesta...">
+                <input type="text" name="2c_Mecanico_Coches_Argumento" required placeholder="Argumente su respuesta...">
             </div>
 
             <!-- Item D -->
             <div class="item-row">
                 <div class="item-text">d. Taller López, S.L.</div>
                 <div class="options-container">
-                    <label class="option-label"><input type="radio" name="item_d" value="E"> Empresa (E)</label>
-                    <label class="option-label"><input type="radio" name="item_d" value="N"> Negocio (N)</label>
+                    <label class="option-label"><input type="radio" name="2d_Taller_Lopez_Opcion" value="Empresa (E)" required> Empresa (E)</label>
+                    <label class="option-label"><input type="radio" name="2d_Taller_Lopez_Opcion" value="Negocio (N)"> Negocio (N)</label>
                 </div>
-                <input type="text" placeholder="Argumente su respuesta...">
+                <input type="text" name="2d_Taller_Lopez_Argumento" required placeholder="Argumente su respuesta...">
             </div>
 
             <!-- Item E -->
             <div class="item-row">
                 <div class="item-text">e. Un emprendedor crea una web con información sobre sellos antiguos a cambio de una suscripción.</div>
                 <div class="options-container">
-                    <label class="option-label"><input type="radio" name="item_e" value="E"> Empresa (E)</label>
-                    <label class="option-label"><input type="radio" name="item_e" value="N"> Negocio (N)</label>
+                    <label class="option-label"><input type="radio" name="2e_Web_Sellos_Opcion" value="Empresa (E)" required> Empresa (E)</label>
+                    <label class="option-label"><input type="radio" name="2e_Web_Sellos_Opcion" value="Negocio (N)"> Negocio (N)</label>
                 </div>
-                <input type="text" placeholder="Argumente su respuesta...">
+                <input type="text" name="2e_Web_Sellos_Argumento" required placeholder="Argumente su respuesta...">
             </div>
 
             <!-- Item F -->
             <div class="item-row">
                 <div class="item-text">f. Dos hermanas crean una agencia de servicio doméstico.</div>
                 <div class="options-container">
-                    <label class="option-label"><input type="radio" name="item_f" value="E"> Empresa (E)</label>
-                    <label class="option-label"><input type="radio" name="item_f" value="N"> Negocio (N)</label>
+                    <label class="option-label"><input type="radio" name="2f_Agencia_Domestico_Opcion" value="Empresa (E)" required> Empresa (E)</label>
+                    <label class="option-label"><input type="radio" name="2f_Agencia_Domestico_Opcion" value="Negocio (N)"> Negocio (N)</label>
                 </div>
-                <input type="text" placeholder="Argumente su respuesta...">
+                <input type="text" name="2f_Agencia_Domestico_Argumento" required placeholder="Argumente su respuesta...">
             </div>
         </div>
 
@@ -410,19 +431,19 @@
 
             <div class="question-group">
                 <label for="ex_negocio">Ejemplo de Negocio (N):</label>
-                <textarea id="ex_negocio" placeholder="Describa una actividad informal o transacción ocasional..."></textarea>
+                <textarea id="ex_negocio" name="3_Ejemplo_Negocio" required placeholder="Describa una actividad informal o transacción ocasional..."></textarea>
             </div>
 
             <div class="question-group">
                 <label for="ex_empresa">Ejemplo de Empresa (E):</label>
-                <textarea id="ex_empresa" placeholder="Describa la misma actividad estructurada de forma legal y continua..."></textarea>
+                <textarea id="ex_empresa" name="3_Ejemplo_Empresa" required placeholder="Describa la misma actividad estructurada de forma legal y continua..."></textarea>
             </div>
         </div>
 
         <!-- Action Buttons -->
         <div class="actions">
             <button type="reset" class="btn btn-secondary">Limpiar Respuestas</button>
-            <button type="button" class="btn btn-primary" onclick="alert('Respuestas guardadas correctamente.')">Guardar / Enviar</button>
+            <button type="submit" class="btn btn-primary">Enviar Respuestas</button>
         </div>
     </form>
 
