@@ -276,9 +276,12 @@
     text-wrap: pretty !important;
 }
 
-/* Las opciones de radio son respuestas, no títulos */
-.leo-beneficios-v2__form .ff-el-form-check-label,
-.leo-beneficios-v2__form .ff-el-form-check-label span {
+/* Las opciones de radio son respuestas, no títulos.
+   Incluye descendientes <span>, <strong> o <b> creados por Fluent Forms. */
+.leo-beneficios-v2__form .ff-el-form-check .ff-el-form-check-label,
+.leo-beneficios-v2__form .ff-el-form-check .ff-el-form-check-label *,
+.leo-beneficios-v2__form .ff-el-form-check input[type="radio"] + span,
+.leo-beneficios-v2__form .ff-el-form-check input[type="checkbox"] + span {
     color: var(--leo-navy) !important;
     font-weight: 400 !important;
 }
@@ -350,8 +353,13 @@
     border-color: var(--leo-gold) !important;
 }
 
-/* Escritorio: altura cerrada para neutralizar el estiramiento de Tutor */
-@media (min-width: 992px) {
+/* Tablet horizontal y escritorio: altura cerrada para neutralizar Tutor */
+@media (min-width: 768px) {
+    .leo-beneficios-v2__concept-grid {
+        grid-auto-rows: 308px !important;
+        align-items: start !important;
+    }
+
     .leo-beneficios-v2__concept-card {
         min-height: 308px !important;
         height: 308px !important;
