@@ -350,6 +350,39 @@
     border-color: var(--leo-gold) !important;
 }
 
+/* Escritorio: altura cerrada para neutralizar el estiramiento de Tutor */
+@media (min-width: 992px) {
+    .leo-beneficios-v2__concept-card {
+        min-height: 308px !important;
+        height: 308px !important;
+        max-height: 308px !important;
+    }
+
+    .leo-beneficios-v2__concept-card img {
+        flex: 0 0 180px !important;
+        height: 180px !important;
+        aspect-ratio: auto !important;
+    }
+
+    .leo-beneficios-v2__concept-card figcaption {
+        flex: 0 0 128px !important;
+        min-height: 128px !important;
+        height: 128px !important;
+        max-height: 128px !important;
+        padding: 14px 16px !important;
+    }
+
+    .leo-beneficios-v2__concept-card figcaption strong {
+        margin-bottom: 4px !important;
+        font-size: 17px !important;
+    }
+
+    .leo-beneficios-v2__concept-card figcaption span {
+        font-size: 13.5px !important;
+        line-height: 1.45 !important;
+    }
+}
+
 /* Tablet */
 @media (max-width: 991px) {
     .leo-beneficios-v2__concept-grid {
