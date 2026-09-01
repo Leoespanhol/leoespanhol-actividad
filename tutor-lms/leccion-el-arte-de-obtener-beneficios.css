@@ -206,7 +206,10 @@
 
 .leo-beneficios-v2__concept-card figcaption {
     display: block !important;
-    flex: 1 1 auto !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
     margin: 0 !important;
     padding: 18px 18px 20px !important;
     background: #ffffff !important;
@@ -265,6 +268,13 @@
     font-size: 16px !important;
     line-height: 1.45 !important;
     font-weight: 700 !important;
+    text-wrap: pretty !important;
+}
+
+.leo-beneficios-v2__form .ff-el-required {
+    display: inline !important;
+    margin-left: 3px !important;
+    white-space: nowrap !important;
 }
 
 .leo-beneficios-v2__form input[type="text"],
@@ -343,11 +353,11 @@
     }
 
     .leo-beneficios-v2__section {
-        margin-bottom: 48px !important;
+        margin-bottom: 36px !important;
     }
 
     .leo-beneficios-v2__reading {
-        padding: 26px 22px 30px !important;
+        padding: 24px 18px 28px !important;
         border-left-width: 5px !important;
         border-radius: 15px !important;
     }
@@ -357,21 +367,24 @@
     }
 
     .leo-beneficios-v2__title {
-        font-size: clamp(30px, 9.5vw, 39px) !important;
-        line-height: 1.08 !important;
+        font-size: 34px !important;
+        line-height: 1.1 !important;
     }
 
     .leo-beneficios-v2__lead {
-        margin-bottom: 26px !important;
-        padding: 18px !important;
-        font-size: 17px !important;
-        line-height: 1.65 !important;
+        margin-bottom: 24px !important;
+        padding: 16px 14px !important;
+        border-left: 0 !important;
+        border-radius: 12px !important;
+        box-shadow: inset 0 0 0 1px #edf0f4 !important;
+        font-size: 16px !important;
+        line-height: 1.58 !important;
     }
 
     .leo-beneficios-v2__body p {
         margin-bottom: 20px !important;
-        font-size: 16.5px !important;
-        line-height: 1.72 !important;
+        font-size: 16px !important;
+        line-height: 1.68 !important;
         text-align: left !important;
         text-align-last: auto !important;
         hyphens: none !important;
@@ -379,12 +392,12 @@
     }
 
     .leo-beneficios-v2__section-title {
-        font-size: 30px !important;
+        font-size: 28px !important;
         line-height: 1.15 !important;
     }
 
     .leo-beneficios-v2__section-intro {
-        font-size: 16.5px !important;
+        font-size: 16px !important;
         line-height: 1.65 !important;
     }
 
@@ -394,12 +407,19 @@
     }
 
     .leo-beneficios-v2__concept-card figcaption {
+        flex: 0 0 auto !important;
+        min-height: 0 !important;
+        height: auto !important;
         padding: 16px 18px 18px !important;
     }
 
     .leo-beneficios-v2__form {
         padding: 22px 18px !important;
         border-radius: 14px !important;
+    }
+
+    .leo-beneficios-v2__form .ff-el-group {
+        margin-bottom: 22px !important;
     }
 
     .leo-beneficios-v2__form .ff-t-container {
