@@ -171,6 +171,7 @@
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     gap: 20px !important;
+    align-items: start !important;
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -179,7 +180,11 @@
 .leo-beneficios-v2__concept-card {
     display: flex !important;
     flex-direction: column !important;
+    align-self: start !important;
+    width: 100% !important;
     min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
     margin: 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
@@ -208,8 +213,8 @@
     display: block !important;
     flex: 0 0 auto !important;
     width: 100% !important;
-    min-height: 0 !important;
-    height: auto !important;
+    min-height: 150px !important;
+    height: 150px !important;
     margin: 0 !important;
     padding: 18px 18px 20px !important;
     background: #ffffff !important;
