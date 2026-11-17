@@ -47,7 +47,19 @@ svg{display:block}
 .footlinks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px}
 .footlinks a{font-size:13px;color:#eef1ff;text-decoration:none;border-bottom:1px solid #ba965d;padding-bottom:2px}
 .micro{font-size:11px!important;color:#b9c2d7!important;margin:16px 0 0!important;font-weight:400!important}
-.form-layout{max-width:590px;margin:0 auto}
+.form-layout,.support-layout{max-width:590px;margin:0 auto}
+.support-hero{text-align:center;margin:0 auto 20px;padding:8px 6px}
+.support-hero h2{font-size:clamp(26px,5.5vw,34px);line-height:1.15;color:var(--navy);margin:6px 0 10px}
+.support-hero p{font-size:15px;color:var(--muted);margin:9px auto;max-width:520px}
+.support-hero .intro-strong{font-weight:680;color:#2b3659}
+.support-choices{display:grid;gap:12px}
+.support-choice{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #e5dccb;border-radius:18px;padding:18px 15px;text-decoration:none;box-shadow:0 5px 16px #1015320f;transition:transform .15s ease,border-color .15s ease}
+.support-choice:focus-visible,.support-choice:hover{outline:none;transform:translateY(-2px);border-color:#bd944e}
+.support-choice strong{display:block;font-size:17px;color:var(--navy);line-height:1.25}
+.support-choice small{display:block;font-size:13px;color:var(--muted);margin-top:5px}
+.support-choice .ico{width:52px;height:52px;flex-basis:52px}
+.support-info{margin-top:20px;padding:16px 18px;border-radius:14px;background:#fff9ef;border:1px solid #e8d2a9;font-size:13px;line-height:1.55;color:#55505a}
+.support-info b{color:#40371f}
 .back{display:inline-flex;gap:7px;text-decoration:none;color:#69572f;font-size:13px;font-weight:650;align-items:center;margin-bottom:14px}
 .formcard{background:#fff;border:1px solid var(--border);border-radius:22px;padding:24px;box-shadow:0 6px 24px #10153213}
 .formcard h2{font-size:25px;line-height:1.2;margin:0 0 10px;color:var(--navy)}
@@ -105,8 +117,31 @@ svg{display:block}
  <a class="linkcard" href="?atividade=hispanidade"><span class="ico"><svg><use href="#award"/></svg></span><span class="label"><b>Dia da Hispanidade 2027</b><small>Pré-inscrição de interesse no evento</small></span><span class="chevron">›</span></a>
  </nav>
  <h2 class="section-title">Apoie nosso propósito</h2>
- <nav class="link-list" aria-label="Apoie o projeto"><a class="linkcard" href="?atividade=apoio"><span class="ico"><svg><use href="#heart"/></svg></span><span class="label"><b>Apoie nosso projeto socioeducacional</b><small>Contribuições financeiras, patrocínios e parcerias</small></span><span class="chevron">›</span></a></nav>
+ <nav class="link-list" aria-label="Apoie o projeto"><a class="linkcard" href="?atividade=apoio"><span class="ico"><svg><use href="#heart"/></svg></span><span class="label"><b>Quero apoiar a Leoespanhol</b><small>Contribuições voluntárias via Pix e outras formas de colaborar</small></span><span class="chevron">›</span></a></nav>
  <p class="note">O cadastro manifesta interesse e não confirma vaga. Datas, formatos e programação serão divulgados oportunamente.</p>
+</section>
+<section id="support" class="support-layout" hidden>
+ <a class="back" href="./">← Voltar à central de inscrições</a>
+ <div class="support-hero">
+  <p class="eyebrow" style="color:#9b753a">Apoie nosso propósito</p>
+  <h2>Ajude a Leoespanhol a conectar pessoas, culturas e oportunidades.</h2>
+  <p>Acreditamos que educação e convivência intercultural podem aproximar comunidades e ampliar oportunidades.</p>
+  <p class="intro-strong">Seu apoio contribui para fortalecer nossas iniciativas educativas, culturais e comunitárias.</p>
+ </div>
+ <div class="support-choices">
+   <a class="support-choice" href="?atividade=apoio-pix">
+     <span class="ico"><svg aria-hidden="true"><use href="#heart"/></svg></span>
+     <span class="label"><strong>Quero contribuir via Pix</strong><small>Contribuição voluntária, com valor livre. Solicite os dados para contribuir.</small></span><span class="chevron" aria-hidden="true">›</span>
+   </a>
+   <a class="support-choice" href="?atividade=apoio-colaborar">
+     <span class="ico"><svg aria-hidden="true"><use href="#u"/></svg></span>
+     <span class="label"><strong>Quero colaborar de outra forma</strong><small>Materiais, serviços, voluntariado, patrocínio ou parceria institucional.</small></span><span class="chevron" aria-hidden="true">›</span>
+   </a>
+ </div>
+ <div class="support-info">
+   <b>Transparência:</b> a Leoespanhol é um empreendimento educacional com propósito socioeducacional. O apoio voluntário não é condição para participar da comunidade e não garante matrícula, vagas ou benefícios comerciais.
+   <p style="margin:10px 0 0"><b>Pix:</b> a chave e o QR Code ainda não estão publicados. Os dados de recebimento serão informados somente após validação da conta e da forma de registro financeiro. Esta página não efetua pagamentos.</p>
+ </div>
 </section>
 <section id="registration" class="form-layout" hidden>
  <a class="back" href="./">← Voltar à central de inscrições</a>
@@ -150,14 +185,29 @@ var configs={
 "dia-livro":{title:"Dia do Livro e do Idioma 2027",desc:"Faça sua pré-inscrição de interesse. A programação ainda será confirmada.",options:["Participar como público","Colaborar ou ser voluntário","Apresentar atividade","Apoiar institucionalmente"]},
 "corrida":{title:"Corrida das Nações 2027",desc:"Cadastre seu interesse na proposta de integração esportiva. Percurso, data e vagas ainda serão definidos.",options:["Corrida","Caminhada","Apoiar como voluntário","Possível apoio ou patrocínio"]},
 "hispanidade":{title:"Dia da Hispanidade 2027",desc:"Receba novidades e manifestação de interesse sobre a próxima edição.",options:["Participar como público","Colaborar como voluntário","Apresentar atividade cultural","Possível parceria institucional"]},
-"apoio":{title:"Apoie nosso projeto socioeducacional",desc:"Quer contribuir para ampliar nossas atividades educativas, culturais e comunitárias? Cadastre seu interesse para nossa equipe apresentar as formas de apoio e as informações necessárias. Este formulário não recebe pagamentos.",options:["Quero contribuir financeiramente","Quero patrocinar um evento ou atividade","Quero apoiar com materiais ou serviços","Quero estabelecer uma parceria institucional"]}
+"apoio-pix":{title:"Quero contribuir via Pix",desc:"Obrigado por apoiar nosso propósito. Deixe seu contato para que a equipe informe os dados de recebimento após a validação da conta. Não solicitamos pagamento neste formulário.",options:["Quero receber os dados para contribuição via Pix","Gostaria de saber como as contribuições apoiam o projeto"]},
+"apoio-colaborar":{title:"Quero colaborar com o projeto",desc:"Conte como gostaria de apoiar as iniciativas educativas, culturais e comunitárias da Leoespanhol.",options:["Doar materiais ou equipamentos","Oferecer serviços ou conhecimentos","Atuar como voluntário","Apoiar um evento como patrocinador","Propor parceria institucional"]}
 };
 var key=new URLSearchParams(window.location.search).get("atividade");
+if(key==="apoio"){
+ document.getElementById("landing").hidden=true;
+ document.getElementById("support").hidden=false;
+ document.title="Apoie nosso propósito | Leoespanhol";
+ return;
+}
 if(!key||!configs[key])return;
 var c=configs[key];document.getElementById("landing").hidden=true;document.getElementById("registration").hidden=false;
 document.getElementById("form-title").textContent=c.title;document.getElementById("form-desc").textContent=c.desc;
 document.getElementById("activity").value=c.title;document.getElementById("subject").value="Leoespanhol 2027 — "+c.title;
 document.title=c.title+" | Leoespanhol";
+if(key==="apoio-pix"||key==="apoio-colaborar"){
+ var level=document.getElementById("nivel");level.hidden=true;
+ var lvlLabel=document.querySelector('label[for="nivel"]');if(lvlLabel)lvlLabel.hidden=true;
+ var note=document.querySelector("#registration .notice");note.textContent="Seus dados serão usados para responder ao contato solicitado. Este formulário não recebe pagamentos nem solicita dados bancários, documentos ou comprovantes. Contribuir é voluntário e não garante vantagens comerciais.";
+ var btn=document.querySelector("#registration .submit");btn.textContent=key==="apoio-pix"?"SOLICITAR INFORMAÇÕES PARA APOIAR":"ENVIAR MINHA PROPOSTA DE COLABORAÇÃO";
+ var city=document.getElementById("cidade");city.required=false;
+ var cityLabel=document.querySelector('label[for="cidade"]');if(cityLabel)cityLabel.textContent="Cidade e estado (opcional)";
+}
 var root=document.getElementById("preferences");c.options.forEach(function(opt){var lbl=document.createElement("label");lbl.className="tick";var box=document.createElement("input");box.type="checkbox";box.name="Interesse: "+opt;box.value="Sim";lbl.appendChild(box);var span=document.createElement("span");span.textContent=opt;lbl.appendChild(span);root.appendChild(lbl);});
 })();
 </script>
