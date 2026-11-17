@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#101532">
-<meta name="description" content="Comunidade Leoespanhol 2027: participe de experiências imersivas, workshops, clube do livro, eventos culturais e treinamentos.">
+<meta name="description" content="Comunidade Leoespanhol 2027: participe de experiências imersivas, workshops, clube de leitura, eventos culturais e treinamentos.">
 <meta property="og:title" content="Comunidade Leoespanhol 2027 — Escolha como participar">
 <meta property="og:description" content="O espanhol é só o começo. O que vem depois é conexão.">
 <title>Comunidade Leoespanhol 2027 | Inscrições e experiências</title>
@@ -35,6 +35,22 @@ svg{display:block}
 .linkcard{display:flex;align-items:center;gap:13px;text-decoration:none;background:#fff;border:1px solid #e8e0d5;border-radius:17px;padding:13px 13px;box-shadow:0 5px 14px #19203b0e;min-height:81px;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
 .linkcard:hover,.linkcard:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px #19203b21;border-color:#cba15c;outline:none}
 .linkcard.featured{background:linear-gradient(100deg,#f8e4b5,#fff9ed 65%,white);border-color:#d3ac65}
+.experience-group{width:100%;max-width:600px}
+.experience-group summary{cursor:pointer;list-style:none;user-select:none}
+.experience-group summary::-webkit-details-marker{display:none}
+.experience-group summary:focus-visible{outline:3px solid #c9a459;outline-offset:2px}
+.experience-group .group-heading{background:linear-gradient(105deg,#1b244d,#101631);border-color:#4b5372}
+.experience-group .group-heading .label b{color:#f9f2e1}
+.experience-group .group-heading .label small{color:#d6d8e7}
+.experience-group .group-heading .ico{background:#f3d18b;color:#152045}
+.group-arrow{display:grid;place-items:center;min-width:30px;color:#edc477;font-size:30px;transition:transform .2s ease}
+.experience-group[open] .group-arrow{transform:rotate(180deg)}
+.nested-list{display:grid;gap:9px;padding:12px 10px 14px;margin:0 10px;border-left:2px solid #dfc791;background:linear-gradient(90deg,#fff8ea,#fffaf2);border-radius:0 0 14px 14px}
+.nested-list .subcard{background:white;min-height:72px;padding:11px 12px}
+.nested-list .subcard .ico{width:40px;height:40px;flex:0 0 40px;border-radius:10px}
+.nested-list .subcard .ico svg{width:22px;height:22px}
+.nested-list .subcard .label b{font-size:14px}
+.nested-list .subcard .label small{font-size:11px}
 .ico{width:48px;height:48px;display:grid;place-items:center;flex:0 0 48px;background:var(--navy);color:#f6c96d;border-radius:13px}
 .ico svg{width:25px;height:25px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .label{flex:1;min-width:0}
@@ -116,15 +132,21 @@ svg{display:block}
 <section id="landing">
  <div class="motto"><strong>O espanhol é só o começo.</strong><span>O que vem depois é conexão.</span></div>
  <h2 class="section-title">Inscrições e oportunidades</h2>
- <nav class="link-list" aria-label="Atividades 2027">
- <a class="linkcard featured" href="?atividade=comunidade"><span class="ico"><svg><use href="#u"/></svg></span><span class="label"><b>Faça parte da Comunidade Leoespanhol</b><small>Cadastro geral de participantes</small></span><span class="chevron">›</span></a>
- <a class="linkcard" href="?atividade=imersoes"><span class="ico"><svg><use href="#exp"/></svg></span><span class="label"><b>Experiências Imersivas 2027</b><small>Gastronomia, cultura e convivência</small></span><span class="chevron">›</span></a>
- <a class="linkcard" href="?atividade=workshops"><span class="ico"><svg><use href="#work"/></svg></span><span class="label"><b>Workshops e Palestras 2027</b><small>Oficinas, conferências e formação prática</small></span><span class="chevron">›</span></a>
- <a class="linkcard" href="../matriculas-2027/inscricao/"><span class="ico"><svg><use href="#grad"/></svg></span><span class="label"><b>Treinamentos — Academia 2027</b><small>Programas de formação e pré-matrículas</small></span><span class="chevron">›</span></a>
- <a class="linkcard" href="?atividade=clube"><span class="ico"><svg><use href="#book"/></svg></span><span class="label"><b>Clube do Livro Online 2027</b><small>Cadastro de interesse no clube de leitura</small></span><span class="chevron">›</span></a>
- <a class="linkcard" href="?atividade=dia-livro"><span class="ico"><svg><use href="#cal"/></svg></span><span class="label"><b>Dia do Livro e do Idioma 2027</b><small>Pré-inscrição de interesse no evento</small></span><span class="chevron">›</span></a>
- <a class="linkcard" href="?atividade=corrida"><span class="ico"><svg><use href="#run"/></svg></span><span class="label"><b>Corrida das Nações 2027</b><small>Cadastro de interessados na corrida ou caminhada</small></span><span class="chevron">›</span></a>
- <a class="linkcard" href="?atividade=hispanidade"><span class="ico"><svg><use href="#award"/></svg></span><span class="label"><b>Dia da Hispanidade 2027</b><small>Pré-inscrição de interesse no evento</small></span><span class="chevron">›</span></a>
+ <nav class="link-list" aria-label="Comunidade e formação 2027">
+  <a class="linkcard featured" href="?atividade=comunidade"><span class="ico"><svg aria-hidden="true"><use href="#u"/></svg></span><span class="label"><b>Faça parte da Comunidade Leoespanhol</b><small>Cadastre-se para participar da comunidade</small></span><span class="chevron" aria-hidden="true">›</span></a>
+  <details class="experience-group">
+   <summary class="linkcard group-heading"><span class="ico"><svg aria-hidden="true"><use href="#exp"/></svg></span><span class="label"><b>Experiências Imersivas 2027</b><small>Clube de leitura, eventos, workshops, culto em espanhol e mais</small></span><span class="group-arrow" aria-hidden="true">⌄</span></summary>
+   <div class="nested-list">
+    <a class="linkcard subcard" href="?atividade=clube"><span class="ico"><svg aria-hidden="true"><use href="#book"/></svg></span><span class="label"><b>Clube de Leitura 2027</b><small>Leitura, diálogo e encontros culturais</small></span><span class="chevron" aria-hidden="true">›</span></a>
+    <a class="linkcard subcard" href="?atividade=dia-livro"><span class="ico"><svg aria-hidden="true"><use href="#cal"/></svg></span><span class="label"><b>Dia do Livro e do Idioma 2027</b><small>Pré-inscrição no encontro comemorativo</small></span><span class="chevron" aria-hidden="true">›</span></a>
+    <a class="linkcard subcard" href="?atividade=corrida"><span class="ico"><svg aria-hidden="true"><use href="#run"/></svg></span><span class="label"><b>Corrida das Nações 2027</b><small>Corrida, caminhada e integração</small></span><span class="chevron" aria-hidden="true">›</span></a>
+    <a class="linkcard subcard" href="?atividade=hispanidade"><span class="ico"><svg aria-hidden="true"><use href="#award"/></svg></span><span class="label"><b>Dia da Hispanidade 2027</b><small>Encontro cultural e institucional</small></span><span class="chevron" aria-hidden="true">›</span></a>
+    <a class="linkcard subcard" href="?atividade=workshops"><span class="ico"><svg aria-hidden="true"><use href="#work"/></svg></span><span class="label"><b>Workshops e Palestras 2027</b><small>Oficinas e encontros com convidados</small></span><span class="chevron" aria-hidden="true">›</span></a>
+    <a class="linkcard subcard" href="?atividade=culto"><span class="ico"><svg aria-hidden="true"><use href="#heart"/></svg></span><span class="label"><b>Culto em Espanhol 2027</b><small>Participação voluntária em encontro de culto</small></span><span class="chevron" aria-hidden="true">›</span></a>
+    <a class="linkcard subcard" href="?atividade=imersoes"><span class="ico"><svg aria-hidden="true"><use href="#exp"/></svg></span><span class="label"><b>Encontros Culturais e Gastronômicos</b><small>Sabores, culturas e conversação</small></span><span class="chevron" aria-hidden="true">›</span></a>
+   </div>
+  </details>
+  <a class="linkcard" href="../matriculas-2027/inscricao/"><span class="ico"><svg aria-hidden="true"><use href="#grad"/></svg></span><span class="label"><b>Treinamentos — Academia 2027</b><small>Conheça os programas e a pré-matrícula</small></span><span class="chevron" aria-hidden="true">›</span></a>
  </nav>
  <h2 class="section-title">Apoie nosso propósito</h2>
  <nav class="link-list" aria-label="Apoie o projeto"><a class="linkcard" href="?atividade=apoio"><span class="ico"><svg><use href="#heart"/></svg></span><span class="label"><b>Quero apoiar a Leoespanhol</b><small>Contribuições voluntárias via Pix e outras formas de colaborar</small></span><span class="chevron">›</span></a></nav>
@@ -208,12 +230,13 @@ svg{display:block}
 (function(){
 var configs={
 "comunidade":{title:"Faça parte da Comunidade Leoespanhol",desc:"Cadastre-se para conhecer a comunidade e receber informações sobre as atividades de 2027.",options:["Participar dos encontros","Colaborar com iniciativas","Conhecer pessoas e culturas","Receber programação e novidades"]},
-"imersoes":{title:"Experiências Imersivas 2027",desc:"Manifeste interesse em atividades culturais e experiências de comunicação em espanhol.",options:["Gastronomia hispano-americana","Encontros culturais","Rodas de conversação","Esporte e convivência","Outras experiências"]},
+"imersoes":{title:"Encontros Culturais e Gastronômicos 2027",desc:"Manifeste interesse em atividades culturais, gastronômicas e experiências de comunicação em espanhol.",options:["Gastronomia hispano-americana","Encontros culturais","Rodas de conversação","Esporte e convivência","Outras experiências"]},
 "workshops":{title:"Workshops e Palestras 2027",desc:"Receba informações quando abrirmos a programação de oficinas e palestras.",options:["Comunicação e espanhol","Empreendedorismo e carreira","Cultura e educação","Participar como palestrante ou colaborador"]},
-"clube":{title:"Clube do Livro Online 2027",desc:"Participe da lista de interesse do clube online de literatura e conversação.",options:["Literatura hispano-americana","Contos e crônicas","Leituras para iniciantes","Encontros com autores e convidados"]},
+"clube":{title:"Clube de Leitura 2027",desc:"Cadastre seu interesse no clube de leitura, literatura e conversação. O formato dos encontros será informado na programação.",options:["Literatura hispano-americana","Contos e crônicas","Leituras para iniciantes","Encontros com autores e convidados"]},
 "dia-livro":{title:"Dia do Livro e do Idioma 2027",desc:"Faça sua pré-inscrição de interesse. A programação ainda será confirmada.",options:["Participar como público","Colaborar ou ser voluntário","Apresentar atividade","Apoiar institucionalmente"]},
 "corrida":{title:"Corrida das Nações 2027",desc:"Cadastre seu interesse na proposta de integração esportiva. Percurso, data e vagas ainda serão definidos.",options:["Corrida","Caminhada","Apoiar como voluntário","Possível apoio ou patrocínio"]},
 "hispanidade":{title:"Dia da Hispanidade 2027",desc:"Receba novidades e manifestação de interesse sobre a próxima edição.",options:["Participar como público","Colaborar como voluntário","Apresentar atividade cultural","Possível parceria institucional"]},
+"culto":{title:"Culto em Espanhol 2027",desc:"Cadastre seu interesse em participar de um culto realizado em espanhol. A participação é voluntária; local, data e programação serão comunicados posteriormente.",options:["Tenho interesse em participar","Gostaria de receber informações sobre data e local","Tenho interesse em colaborar com a organização"]},
 "apoio-colaborar":{title:"Quero colaborar com o projeto",desc:"Conte como gostaria de apoiar as iniciativas educativas, culturais e comunitárias da Leoespanhol.",options:["Doar materiais ou equipamentos","Oferecer serviços ou conhecimentos","Atuar como voluntário","Apoiar um evento como patrocinador","Propor parceria institucional"]}
 };
 var key=new URLSearchParams(window.location.search).get("atividade");
