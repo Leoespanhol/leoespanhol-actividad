@@ -60,6 +60,16 @@ svg{display:block}
 .support-choice .ico{width:52px;height:52px;flex-basis:52px}
 .support-info{margin-top:20px;padding:16px 18px;border-radius:14px;background:#fff9ef;border:1px solid #e8d2a9;font-size:13px;line-height:1.55;color:#55505a}
 .support-info b{color:#40371f}
+.pix-box{background:#fff;border:1px solid #e5dbc8;border-radius:20px;padding:24px 18px;text-align:center;box-shadow:0 6px 25px #10153212}
+.pix-box h2{font-size:25px;line-height:1.2;color:var(--navy);margin:6px 0 9px}
+.pix-box .pix-code{display:block;width:100%;margin:11px auto 10px;border:1px solid #d7d5ce;border-radius:10px;padding:10px;min-height:63px;background:#f9f8f5;color:#3b4660;font-size:12px;resize:none;word-break:break-all}
+.pix-qr{width:235px;height:235px;background:white;border:2px solid #eee9df;border-radius:12px;padding:9px;margin:14px auto;display:block;max-width:100%}
+.pix-key{font-size:19px;color:#132044;letter-spacing:.03em;font-weight:850;margin:7px 0;overflow-wrap:anywhere}
+.pix-btn{border:0;border-radius:12px;background:linear-gradient(105deg,#b98530,#f1d17e);padding:13px 17px;width:100%;font-size:14px;font-weight:820;color:#101532;cursor:pointer;margin:8px 0 4px}
+.pix-btn.secondary{background:#151b3b;color:#fff}
+.pix-help{font-size:13px;color:#626a7d;line-height:1.5;margin:10px auto}
+.pix-feedback{min-height:21px;color:#346945;font-weight:650;font-size:13px}
+.pix-note{background:#fff8ea;border-left:3px solid #bd944b;padding:14px;margin-top:14px;border-radius:7px;font-size:13px;color:#4e515c;line-height:1.5}
 .back{display:inline-flex;gap:7px;text-decoration:none;color:#69572f;font-size:13px;font-weight:650;align-items:center;margin-bottom:14px}
 .formcard{background:#fff;border:1px solid var(--border);border-radius:22px;padding:24px;box-shadow:0 6px 24px #10153213}
 .formcard h2{font-size:25px;line-height:1.2;margin:0 0 10px;color:var(--navy)}
@@ -131,7 +141,7 @@ svg{display:block}
  <div class="support-choices">
    <a class="support-choice" href="?atividade=apoio-pix">
      <span class="ico"><svg aria-hidden="true"><use href="#heart"/></svg></span>
-     <span class="label"><strong>Quero contribuir via Pix</strong><small>Contribuição voluntária, com valor livre. Solicite os dados para contribuir.</small></span><span class="chevron" aria-hidden="true">›</span>
+     <span class="label"><strong>Quero contribuir via Pix</strong><small>Escolha o valor e use a chave, o QR Code ou o Pix Copia e Cola.</small></span><span class="chevron" aria-hidden="true">›</span>
    </a>
    <a class="support-choice" href="?atividade=apoio-colaborar">
      <span class="ico"><svg aria-hidden="true"><use href="#u"/></svg></span>
@@ -140,7 +150,26 @@ svg{display:block}
  </div>
  <div class="support-info">
    <b>Transparência:</b> a Leoespanhol é um empreendimento educacional com propósito socioeducacional. O apoio voluntário não é condição para participar da comunidade e não garante matrícula, vagas ou benefícios comerciais.
-   <p style="margin:10px 0 0"><b>Pix:</b> a chave e o QR Code ainda não estão publicados. Os dados de recebimento serão informados somente após validação da conta e da forma de registro financeiro. Esta página não efetua pagamentos.</p>
+   <p style="margin:10px 0 0"><b>Pix:</b> o código está disponível para contribuição espontânea. Antes de transferir, confirme o nome e CNPJ do destinatário no aplicativo bancário. A página não processa o pagamento.</p>
+ </div>
+</section>
+<section id="pix-payment" class="form-layout" hidden>
+ <a class="back" href="?atividade=apoio">← Voltar às formas de apoio</a>
+ <div class="pix-box">
+  <p class="eyebrow" style="color:#9b753a">Apoie nosso propósito</p>
+  <h2>Contribuição voluntária via Pix</h2>
+  <p class="pix-help">Seu apoio ajuda a fortalecer iniciativas socioeducacionais e culturais da Leoespanhol. Você escolhe o valor no aplicativo do seu banco.</p>
+  <p style="font-size:13px;color:#6a7084;margin:14px 0 5px">Chave Pix · CNPJ</p>
+  <p class="pix-key" id="pix-key">54.747.133/0001-55</p>
+  <button type="button" class="pix-btn" id="copy-key">COPIAR CHAVE PIX</button>
+  <svg class="pix-qr" id="pix-qr" role="img" aria-label="QR Code Pix de contribuição voluntária à Leoespanhol" viewBox="0 0 49 49" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges"><rect width="49" height="49" fill="#fff"/><path id="pix-modules" fill="#000"/></svg>
+  <p class="pix-help">Ou abra o aplicativo do banco e escaneie o QR Code.</p>
+  <label for="pix-payload" style="display:block;font-size:13px;font-weight:700;text-align:left">Pix Copia e Cola</label>
+  <textarea class="pix-code" id="pix-payload" readonly spellcheck="false">00020126360014br.gov.bcb.pix0114547471330001555204000053039865802BR5911LEOESPANHOL6012SAO BERNARDO62130509APOIO202763042A05</textarea>
+  <button type="button" class="pix-btn secondary" id="copy-payload">COPIAR PIX COPIA E COLA</button>
+  <p id="pix-feedback" class="pix-feedback" role="status" aria-live="polite"></p>
+  <div class="pix-note"><b>Confira antes de confirmar:</b> o aplicativo do banco deve mostrar o CNPJ informado e o nome de titularidade correspondente à Leoespanhol. Se o destinatário for diferente, não conclua o pagamento e entre em contato conosco. A chave e o QR Code foram montados a partir dos dados informados e ainda não foram verificados em um banco.</div>
+  <div class="pix-note">Esta é uma <b>contribuição voluntária</b> para um empreendimento educacional com propósito socioeducacional, não uma doação com benefício fiscal. Não oferece vaga, certificado ou qualquer benefício em troca. A página não processa pagamentos.</div>
  </div>
 </section>
 <section id="registration" class="form-layout" hidden>
@@ -185,10 +214,25 @@ var configs={
 "dia-livro":{title:"Dia do Livro e do Idioma 2027",desc:"Faça sua pré-inscrição de interesse. A programação ainda será confirmada.",options:["Participar como público","Colaborar ou ser voluntário","Apresentar atividade","Apoiar institucionalmente"]},
 "corrida":{title:"Corrida das Nações 2027",desc:"Cadastre seu interesse na proposta de integração esportiva. Percurso, data e vagas ainda serão definidos.",options:["Corrida","Caminhada","Apoiar como voluntário","Possível apoio ou patrocínio"]},
 "hispanidade":{title:"Dia da Hispanidade 2027",desc:"Receba novidades e manifestação de interesse sobre a próxima edição.",options:["Participar como público","Colaborar como voluntário","Apresentar atividade cultural","Possível parceria institucional"]},
-"apoio-pix":{title:"Quero contribuir via Pix",desc:"Obrigado por apoiar nosso propósito. Deixe seu contato para que a equipe informe os dados de recebimento após a validação da conta. Não solicitamos pagamento neste formulário.",options:["Quero receber os dados para contribuição via Pix","Gostaria de saber como as contribuições apoiam o projeto"]},
 "apoio-colaborar":{title:"Quero colaborar com o projeto",desc:"Conte como gostaria de apoiar as iniciativas educativas, culturais e comunitárias da Leoespanhol.",options:["Doar materiais ou equipamentos","Oferecer serviços ou conhecimentos","Atuar como voluntário","Apoiar um evento como patrocinador","Propor parceria institucional"]}
 };
 var key=new URLSearchParams(window.location.search).get("atividade");
+if(key==="apoio-pix"){
+ document.getElementById("landing").hidden=true;
+ document.getElementById("pix-payment").hidden=false;
+ document.title="Contribuição voluntária via Pix | Leoespanhol";
+ var rows="0000000000000,0000000000000,0000000000000,0000000000000,01fdc01f297f0,0105389317410,0175d5d9315d0,0174a837155d0,017598f7695d0,0104f64954410,01fd5555557f0,0000b975c2000,013febe16f970,01bbdeea73250,00b4560a3d640,00da2ee45f610,00ae4e23a7820,0001a9344e380,01572933acea0,0089f65292440,00b516486a8f0,0152f9ea43b20,0096b4f1d3e90,01716b0b8f9a0,0146305891920,01cac78505120,01df2a06e1760,0138f0f72ed50,017d1035262c0,01387802211e0,012c4ba93acb0,0092f2be9f750,00169a18a1b80,01ca759fc4f30,01df9fdadfff0,01f206c1b2ba0,01be41d59bf30,000159a5c1180,01fdee18bd5c0,01051d7089150,0175ccbd9ff70,01755e7fc32a0,0174df82161b0,01049eb456950,01fdce55f4f40,0000000000000,0000000000000,0000000000000,0000000000000".split(",");
+ var d="";for(var y=0;y<rows.length;y++){var bits=BigInt("0x"+rows[y]);for(var x=0;x<49;x++){if(bits & (1n<<BigInt(48-x))){d+="M"+x+" "+y+"h1v1h-1z";}}}
+ document.getElementById("pix-modules").setAttribute("d",d);
+ function copyValue(text){var status=document.getElementById("pix-feedback");
+ if(navigator.clipboard && window.isSecureContext){navigator.clipboard.writeText(text).then(function(){status.textContent="Copiado! Abra seu aplicativo bancário.";}).catch(function(){fallback();});}
+ else fallback();
+ function fallback(){var helper=document.createElement("textarea");helper.value=text;helper.style.position="fixed";helper.style.top="-9999px";document.body.appendChild(helper);helper.select();try{status.textContent=document.execCommand("copy")?"Copiado! Abra seu aplicativo bancário.":"Selecione e copie o código manualmente.";}catch(e){status.textContent="Selecione e copie o código manualmente.";}helper.remove();}
+ }
+ document.getElementById("copy-key").addEventListener("click",function(){copyValue("54747133000155");});
+ document.getElementById("copy-payload").addEventListener("click",function(){copyValue(document.getElementById("pix-payload").value);});
+ return;
+}
 if(key==="apoio"){
  document.getElementById("landing").hidden=true;
  document.getElementById("support").hidden=false;
