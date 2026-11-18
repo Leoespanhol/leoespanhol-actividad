@@ -144,7 +144,7 @@ svg{display:block}
   <details class="experience-group">
    <summary class="linkcard group-heading"><span class="ico"><svg aria-hidden="true"><use href="#exp"/></svg></span><span class="label"><b>Experiências Imersivas 2027</b><small>Clube de leitura, eventos, workshops, culto em espanhol e mais</small></span><span class="group-arrow" aria-hidden="true">⌄</span></summary>
    <div class="nested-list">
-    <a class="linkcard subcard" href="?atividade=dia-livro"><span class="ico"><svg aria-hidden="true"><use href="#cal"/></svg></span><span class="label"><b>Dia do Livro e do Idioma 2027</b><small>Pré-inscrição no encontro comemorativo</small></span><span class="chevron" aria-hidden="true">›</span></a>
+    <a class="linkcard subcard" href="https://docs.google.com/forms/d/e/1FAIpQLSdm1XNyQvaL5YO8yY86qXbQe_W14AKGhL5-SkWS4vCoHMjE3g/viewform"><span class="ico"><svg aria-hidden="true"><use href="#cal"/></svg></span><span class="label"><b>Dia do Livro e do Idioma 2027</b><small>Inscreva-se pelo Google Forms; respostas no Google Sheets</small></span><span class="chevron" aria-hidden="true">›</span></a>
     <a class="linkcard subcard" href="?atividade=corrida"><span class="ico"><svg aria-hidden="true"><use href="#run"/></svg></span><span class="label"><b>Corrida das Nações 2027</b><small>Corrida, caminhada e integração</small></span><span class="chevron" aria-hidden="true">›</span></a>
     <a class="linkcard subcard" href="?atividade=hispanidade"><span class="ico"><svg aria-hidden="true"><use href="#award"/></svg></span><span class="label"><b>Dia da Hispanidade 2027</b><small>Encontro cultural e institucional</small></span><span class="chevron" aria-hidden="true">›</span></a>
     <a class="linkcard subcard" href="?atividade=workshops"><span class="ico"><svg aria-hidden="true"><use href="#work"/></svg></span><span class="label"><b>Workshops e Palestras 2027</b><small>Oficinas e encontros com convidados</small></span><span class="chevron" aria-hidden="true">›</span></a>
@@ -252,6 +252,19 @@ var configs={
 "apoio-colaborar":{title:"Quero colaborar com o projeto",desc:"Conte como gostaria de apoiar as iniciativas educativas, culturais e comunitárias da Leoespanhol.",options:["Doar materiais ou equipamentos","Oferecer serviços ou conhecimentos","Atuar como voluntário","Apoiar um evento como patrocinador","Propor parceria institucional"]}
 };
 var key=new URLSearchParams(window.location.search).get("atividade");
+if(key==="dia-livro"){
+ document.getElementById("landing").hidden=true;
+ var replacement=document.getElementById("registration");
+ replacement.hidden=false;
+ var title=document.getElementById("form-title");
+ title.textContent="Inscrição — Dia do Livro e do Idioma 2027";
+ document.getElementById("form-desc").textContent="O formulário de inscrição foi transferido para o Google Forms, conectado ao Google Sheets institucional.";
+ var oldForm=document.getElementById("cadastro");oldForm.hidden=true;
+ var link=document.createElement("a");link.href="https://docs.google.com/forms/d/e/1FAIpQLSdm1XNyQvaL5YO8yY86qXbQe_W14AKGhL5-SkWS4vCoHMjE3g/viewform";link.className="submit";link.style.display="block";link.style.textAlign="center";link.style.textDecoration="none";link.textContent="ABRIR INSCRIÇÃO NO GOOGLE FORMS";
+ oldForm.parentNode.appendChild(link);
+ document.title="Inscrição Dia do Livro 2027 | Leoespanhol";
+ return;
+}
 if(key==="apoio-pix"){
  document.getElementById("landing").hidden=true;
  document.getElementById("pix-payment").hidden=false;
