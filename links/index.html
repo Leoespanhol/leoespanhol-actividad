@@ -102,6 +102,13 @@ svg{display:block}
 .submit{border:0;border-radius:12px;background:linear-gradient(105deg,#b98530,#f1d17e);color:#171b38;padding:15px;width:100%;font-size:15px;font-weight:850;cursor:pointer;margin-top:12px}
 .submit:hover{filter:brightness(1.05)}
 .notice{background:#faf3e5;border-left:3px solid #bc913e;padding:12px;border-radius:5px;font-size:12px;margin:16px 0;color:#5c512d}
+.send-status{border-radius:12px;margin:14px 0 8px;padding:13px;font-size:13px;line-height:1.55}
+.send-status.error{background:#fff1ee;border:1px solid #d6a39b;color:#6d2724}
+.send-status.info{background:#fff8e8;border:1px solid #e4cc98;color:#5e5033}
+.fallback-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+.fallback-actions button,.fallback-actions a{font:inherit;border:1px solid #ac9659;color:#111836;border-radius:10px;background:#fff;padding:12px 10px;cursor:pointer;text-align:center;text-decoration:none;font-size:12px;font-weight:750}
+.fallback-actions button:hover,.fallback-actions a:hover{background:#fff8e9}
+@media(max-width:390px){.fallback-actions{grid-template-columns:1fr}}
 [hidden]{display:none!important}
 @media (max-width:430px){.brandname{font-size:21px}.hero{padding:25px 20px 58px}.main{padding:54px 12px 20px}.linkcard{padding:11px;min-height:79px}.ico{width:43px;height:43px;flex-basis:43px}.label b{font-size:14px}.label small{font-size:11px}.formcard{padding:19px}}
 </style>
@@ -219,7 +226,12 @@ svg{display:block}
  <label class="tick"><input type="checkbox" name="Consentimento para cadastro" value="Sim" required><span>Autorizo o tratamento dos dados informados para o cadastro e contato relacionados à atividade selecionada. *</span></label>
  <label class="tick"><input type="checkbox" name="Deseja receber novidades" value="Sim"><span>Quero receber também novidades sobre outras atividades da Leoespanhol. (Opcional)</span></label>
  <button class="submit" type="submit">ENVIAR MEU CADASTRO DE INTERESSE</button>
- <p class="help">Ao enviar, você poderá passar por uma verificação de segurança do serviço de formulários.</p>
+ <div id="send-status" class="send-status info" role="status" aria-live="polite" hidden></div>
+ <div id="fallback-actions" class="fallback-actions" hidden>
+  <button type="button" id="send-email">ABRIR E-MAIL COM OS DADOS</button>
+  <button type="button" id="copy-registration">COPIAR MEU CADASTRO</button>
+ </div>
+ <p class="help">A inscrição só é considerada recebida após a confirmação do envio. Se houver falha de conexão, use as opções alternativas acima.</p>
  </form>
  </div>
 </section>
@@ -276,6 +288,70 @@ if(key==="apoio-pix"||key==="apoio-colaborar"){
  var cityLabel=document.querySelector('label[for="cidade"]');if(cityLabel)cityLabel.textContent="Cidade e estado (opcional)";
 }
 var root=document.getElementById("preferences");c.options.forEach(function(opt){var lbl=document.createElement("label");lbl.className="tick";var box=document.createElement("input");box.type="checkbox";box.name="Interesse: "+opt;box.value="Sim";lbl.appendChild(box);var span=document.createElement("span");span.textContent=opt;lbl.appendChild(span);root.appendChild(lbl);});
+var form=document.getElementById("cadastro");
+var feedback=document.getElementById("send-status");
+var actions=document.getElementById("fallback-actions");
+var submit=form.querySelector('button[type="submit"]');
+var originalLabel=submit.textContent;
+function status(text,type){
+ feedback.hidden=false;
+ feedback.className="send-status "+type;
+ feedback.textContent=text;
+ feedback.scrollIntoView({behavior:"smooth",block:"center"});
+}
+function signupText(){
+ var lines=["Solicitação de cadastro — Leoespanhol 2027",""];
+ new FormData(form).forEach(function(v,k){
+  if(k[0]!=="_" && v && k!=="Consentimento para cadastro" && k!=="Deseja receber novidades"){lines.push(k+": "+String(v));}
+ });
+ return lines.join("\n");
+}
+function openEmail(){
+ var content=signupText();
+ var url="mailto:contato@leoespanhol.com.br?subject="+encodeURIComponent("Cadastro alternativo — "+c.title)+"&body="+encodeURIComponent(content);
+ window.location.href=url;
+ status("O aplicativo de e-mail foi solicitado. Confirme o envio no próprio aplicativo; o cadastro não foi transmitido automaticamente pela página.","info");
+}
+function copySignup(){
+ var content=signupText();
+ var done=function(){status("Dados copiados. Envie-os para contato@leoespanhol.com.br pelo seu e-mail. A inscrição ainda não está confirmada.","info")};
+ if(navigator.clipboard && window.isSecureContext){navigator.clipboard.writeText(content).then(done).catch(function(){legacyCopy(content,done);});}
+ else legacyCopy(content,done);
+}
+function legacyCopy(content,done){
+ var area=document.createElement("textarea");area.value=content;
+ area.style.position="fixed";area.style.left="-9999px";document.body.appendChild(area);area.select();
+ try{if(document.execCommand("copy"))done();else status("Não foi possível copiar automaticamente. Use a opção de e-mail ou tente novamente.","error");}
+ catch(e){status("Não foi possível copiar automaticamente. Use a opção de e-mail ou tente novamente.","error");}
+ area.remove();
+}
+document.getElementById("send-email").addEventListener("click",openEmail);
+document.getElementById("copy-registration").addEventListener("click",copySignup);
+form.addEventListener("submit",async function(ev){
+ ev.preventDefault();
+ if(!form.reportValidity())return;
+ actions.hidden=true;
+ status("Enviando seus dados. Não feche esta página até aparecer o resultado.","info");
+ submit.disabled=true;
+ submit.textContent="ENVIANDO...";
+ var controller=new AbortController();
+ var timeout=setTimeout(function(){controller.abort();},18000);
+ try{
+  var data={};new FormData(form).forEach(function(v,k){data[k]=String(v)});
+  var response=await fetch("https://formsubmit.co/ajax/contato@leoespanhol.com.br",{
+   method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+   body:JSON.stringify(data),signal:controller.signal
+  });
+  if(!response.ok)throw new Error("Servidor de envio indisponível (HTTP "+response.status+")");
+  var result=await response.json();
+  if(result.success!==true && result.success!=="true")throw new Error("O servidor não confirmou o recebimento");
+  window.location.assign("./obrigado.html");
+ }catch(error){
+  console.warn("Falha ao enviar cadastro:",error);
+  status("Não foi possível confirmar o recebimento do seu cadastro. Os dados continuam preenchidos nesta página. Você pode enviá-los por e-mail ou copiá-los; não considere a inscrição concluída até receber confirmação da Leoespanhol.","error");
+  actions.hidden=false;
+ }finally{clearTimeout(timeout);submit.disabled=false;submit.textContent=originalLabel;}
+});
 })();
 </script>
 </body>
