@@ -35,8 +35,70 @@ a{color:inherit}.wrap{max-width:940px;padding:0 22px;margin:auto}.top{background
 <section class="section"><div class="section-title"><span class="number">3</span><h2>Modalidade e disponibilidade</h2></div><fieldset><legend>Como você prefere estudar? <b>*</b></legend><div class="options"><label class="choice"><input type="radio" name="Modalidade preferida" value="Aulas online em grupo" required><span>Aulas online em grupo</span></label><label class="choice"><input type="radio" name="Modalidade preferida" value="Aulas individuais (VIP)" required><span>Aulas individuais (VIP)</span></label><label class="choice"><input type="radio" name="Modalidade preferida" value="Treinamento intensivo" required><span>Treinamento intensivo</span></label><label class="choice"><input type="radio" name="Modalidade preferida" value="Treinamento para empresas" required><span>Treinamento para empresas</span></label><label class="choice"><input type="radio" name="Modalidade preferida" value="Ainda não decidi" required><span>Ainda não decidi</span></label></div></fieldset><fieldset id="periodos"><legend>Quais períodos você tem disponíveis? <b>*</b></legend><p class="help">Você pode marcar mais de uma opção.</p><div class="options"><label class="choice"><input type="checkbox" name="Disponibilidade[]" value="Manhã" ><span>Manhã</span></label><label class="choice"><input type="checkbox" name="Disponibilidade[]" value="Tarde" ><span>Tarde</span></label><label class="choice"><input type="checkbox" name="Disponibilidade[]" value="Noite" ><span>Noite</span></label><label class="choice"><input type="checkbox" name="Disponibilidade[]" value="Sábados" ><span>Sábados</span></label><label class="choice"><input type="checkbox" name="Disponibilidade[]" value="Horários flexíveis" ><span>Horários flexíveis</span></label></div><p class="error" id="erro-periodos" role="alert">Selecione ao menos um período.</p></fieldset><div class="field"><label for="inicio">Quando pretende iniciar seus estudos? <b>*</b></label><select id="inicio" name="Quando pretende iniciar seus estudos?" required><option value="">Selecione uma opção</option><option>Fevereiro de 2027</option><option>Primeiro semestre de 2027</option><option>Segundo semestre de 2027</option><option>Quero conhecer as opções</option></select></div></section>
 <section class="section"><div class="section-title"><span class="number">4</span><h2>Informações complementares</h2></div><div class="field"><label for="origem">Como conheceu a LeoEspanhol?</label><select id="origem" name="Como conheceu a LeoEspanhol?" ><option value="">Selecione uma opção</option><option>Instagram</option><option>Indicação</option><option>Evento</option><option>Escola ou empresa</option><option>Panfleto / QR Code</option><option>Outro</option></select></div><div class="field"><label for="mensagem">Deseja deixar alguma mensagem para nossa equipe?</label><textarea id="mensagem" name="Mensagem adicional" maxlength="1000" placeholder="Dúvidas, necessidades ou informações adicionais..."></textarea></div></section>
 <section class="section"><div class="section-title"><span class="number">5</span><h2>Privacidade e autorizações</h2></div><details class="privacy"><summary>Informações sobre o tratamento de dados</summary><p>Responsável: Academia LeoEspanhol — contato@leoespanhol.com.br. Utilizamos as informações para responder à sua solicitação, apresentar treinamentos, horários e condições de matrícula. O envio é processado pela plataforma externa FormSubmit, que encaminha as respostas por e-mail. Solicitações de acesso, correção ou exclusão de dados podem ser encaminhadas ao nosso e-mail. A comunicação de marketing é opcional e pode ser cancelada a qualquer momento. Não solicitamos CPF, documentos ou pagamento nesta etapa.</p></details><label class="consent"><input type="checkbox" name="Autorizo contato para pré-matrícula" value="Sim" required><span>Li as informações de privacidade e autorizo o tratamento dos dados informados para atendimento à minha solicitação de pré-matrícula. <b>*</b></span></label><label class="consent"><input type="checkbox" name="Aceito receber novidades e ofertas" value="Sim"><span>Desejo receber conteúdos educativos, novidades e oportunidades da Academia LeoEspanhol por WhatsApp ou e-mail. (Opcional)</span></label></section>
-<div class="finish"><button class="submit" type="submit">ENVIAR MINHA PRÉ-MATRÍCULA</button><p class="error" id="erro-geral" role="alert"></p><p class="footnote">A pré-matrícula é gratuita, não garante vaga e não implica contratação. A confirmação depende da disponibilidade e da formalização da matrícula.</p></div>
+<div class="finish"><button class="submit" type="submit">ENVIAR MINHA PRÉ-MATRÍCULA</button><p class="error" id="erro-geral" role="alert"></p>
+<div id="form-envio-status" role="status" aria-live="polite" style="display:none;padding:13px;border:1px solid #d8a19b;background:#fff3f0;border-radius:12px;color:#582d29;font-size:14px;margin-top:14px"></div>
+<div id="form-resgate" style="display:none;gap:10px;margin-top:12px;flex-wrap:wrap">
+ <button id="form-enviar-email" type="button" style="flex:1;min-width:180px;border:1px solid #c79c52;background:#fff;color:#171b38;padding:12px 10px;border-radius:10px;font-weight:750">ENVIAR POR E-MAIL</button>
+ <button id="form-copiar-dados" type="button" style="flex:1;min-width:180px;border:1px solid #c79c52;background:#fff;color:#171b38;padding:12px 10px;border-radius:10px;font-weight:750">COPIAR DADOS PREENCHIDOS</button>
+</div>
+<p class="footnote">A pré-matrícula é gratuita, não garante vaga e não implica contratação. A confirmação depende da disponibilidade e da formalização da matrícula.</p></div>
 </form></div></main><footer class="footer">Academia LeoEspanhol — Conversa y Aprende · <a href="mailto:contato@leoespanhol.com.br">contato@leoespanhol.com.br</a> · <a href="https://instagram.com/leoespanholoficial">@leoespanholoficial</a></footer>
 <script>
 (function(){const form=document.getElementById("form");form.addEventListener("submit",function(e){let target=null;for(const [fid,err] of [["objetivos","erro-objetivos"],["periodos","erro-periodos"]]){const box=document.getElementById(fid),valid=!!box.querySelector('input[type="checkbox"]:checked');document.getElementById(err).style.display=valid?"none":"block";if(!valid&&!target)target=box;}const tel=document.getElementById("whatsapp"),digits=tel.value.replace(/\D/g,"");tel.setCustomValidity(digits.length>=10&&digits.length<=13?"":"Digite um WhatsApp com DDD válido.");const valid=form.reportValidity();if(target||!valid){e.preventDefault();const error=document.getElementById("erro-geral");error.textContent="Confira os campos obrigatórios antes de enviar.";error.style.display="block";if(target)target.scrollIntoView({behavior:"smooth",block:"center"});}});document.getElementById("whatsapp").addEventListener("input",function(){this.setCustomValidity("");});})();
+</script><script>
+(function(){
+ var form=document.getElementById("form"),sub=form.querySelector('button[type="submit"]');
+ var msg=document.getElementById("form-envio-status"),fallback=document.getElementById("form-resgate");
+ var initial=sub.textContent;
+ function status(t,isError){msg.style.display="block";msg.textContent=t;msg.style.color=isError?"#582d29":"#3b4b61";msg.scrollIntoView({block:"center",behavior:"smooth"});}
+ function collect(){
+  var result={};
+  new FormData(form).forEach(function(value,key){
+   if(result[key])result[key]+=", "+String(value);else result[key]=String(value);
+  });
+  return result;
+ }
+ function shareText(){
+  var data=collect(),lines=["Pré-matrícula 2027 — Leoespanhol",""];
+  Object.keys(data).forEach(function(k){
+   if(k.charAt(0)!=="_" && k!=="Aceito receber novidades e ofertas" && k!=="Autorizo contato para pré-matrícula")lines.push(k+": "+data[k]);
+  });
+  return lines.join("\n");
+ }
+ document.getElementById("form-enviar-email").addEventListener("click",function(){
+  var text=shareText();
+  window.location.href="mailto:contato@leoespanhol.com.br?subject="+encodeURIComponent("Pré-matrícula 2027 — envio alternativo")+"&body="+encodeURIComponent(text.slice(0,1900));
+  status("Verifique seu aplicativo de e-mail e confirme o envio da mensagem. A pré-matrícula ainda não está confirmada.",false);
+ });
+ document.getElementById("form-copiar-dados").addEventListener("click",async function(){
+  var text=shareText(),ok=false;
+  try{if(navigator.clipboard && window.isSecureContext){await navigator.clipboard.writeText(text);ok=true;}}
+  catch(e){}
+  if(!ok){var el=document.createElement("textarea");el.value=text;el.style.position="fixed";el.style.top="-9999px";document.body.appendChild(el);el.select();try{ok=document.execCommand("copy")}catch(e){}el.remove();}
+  status(ok?"Dados copiados. Envie-os ao e-mail contato@leoespanhol.com.br e aguarde a confirmação.":"Não foi possível copiar automaticamente. Tente o botão de e-mail.",!ok);
+ });
+ form.addEventListener("submit",async function(ev){
+  if(ev.defaultPrevented)return;
+  ev.preventDefault();
+  if(!form.reportValidity())return;
+  fallback.style.display="none";
+  status("Enviando sua pré-matrícula. Não feche esta tela até aparecer a confirmação.",false);
+  sub.disabled=true;sub.textContent="ENVIANDO...";
+  var controller=new AbortController(),timeout=setTimeout(function(){controller.abort();},18000);
+  try{
+   var response=await fetch("https://formsubmit.co/ajax/contato@leoespanhol.com.br",{
+    method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+    body:JSON.stringify(collect()),signal:controller.signal
+   });
+   if(!response.ok)throw new Error("HTTP "+response.status);
+   var result=await response.json();
+   if(result.success!==true && result.success!=="true")throw new Error("Sem confirmação de recebimento");
+   window.location.assign(form.querySelector('input[name="_next"]').value);
+  }catch(error){
+   console.warn("Falha no envio de pré-matrícula:",error);
+   status("Não foi possível confirmar o recebimento da pré-matrícula. Os dados continuam preenchidos. Você pode enviá-los por e-mail ou copiá-los para não perder o cadastro. Aguarde a confirmação da equipe.",true);
+   fallback.style.display="flex";
+  }finally{clearTimeout(timeout);sub.disabled=false;sub.textContent=initial;}
+ });
+})();
 </script></body></html>
