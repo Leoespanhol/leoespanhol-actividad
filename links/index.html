@@ -207,10 +207,10 @@ svg{display:block}
  <p class="eyebrow" style="color:#99702b">Leoespanhol 2027</p>
  <h2 id="form-title">Cadastro de interesse</h2>
  <p class="intro" id="form-desc">Preencha seus dados para receber informações.</p>
- <form id="cadastro" action="https://formsubmit.co/contato@leoespanhol.com.br" method="POST">
+ <form id="cadastro" action="https://formspree.io/f/xkjngbpr" method="POST">
  <input type="hidden" name="_subject" id="subject" value="Cadastro Leoespanhol 2027">
- <input type="hidden" name="_template" value="table">
- <input type="hidden" name="_next" value="https://leoespanhol.github.io/leoespanhol-actividad/links/obrigado.html">
+ <input type="hidden" name="Origem do cadastro" value="Central Leoespanhol 2027">
+ 
  <input type="hidden" name="Atividade escolhida" id="activity">
  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
  <label for="nome">Nome completo *</label><input id="nome" type="text" name="Nome" autocomplete="name" minlength="3" maxlength="120" required>
@@ -222,7 +222,7 @@ svg{display:block}
  <select id="nivel" name="Nível de espanhol"><option value="Não informado">Selecione, se desejar</option><option>Iniciante</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1 ou superior</option><option>Falante nativo</option></select>
  <fieldset><legend id="prefer-title">Como gostaria de participar?</legend><div id="preferences"></div></fieldset>
  <label for="obs">Mensagem ou observação (opcional)</label><textarea id="obs" name="Mensagem" maxlength="1000" placeholder="Conte-nos seus interesses ou dúvidas."></textarea>
- <p class="notice">Seus dados serão usados para administrar este cadastro e entrar em contato sobre a atividade escolhida. Não solicitamos CPF, documentos nem pagamento. Este cadastro de interesse não garante vaga.</p>
+ <p class="notice">Seus dados serão enviados pelo Formspree e usados para administrar este cadastro e entrar em contato sobre a atividade escolhida. Não solicitamos CPF, documentos nem pagamento. Este cadastro de interesse não garante vaga.</p>
  <label class="tick"><input type="checkbox" name="Consentimento para cadastro" value="Sim" required><span>Autorizo o tratamento dos dados informados para o cadastro e contato relacionados à atividade selecionada. *</span></label>
  <label class="tick"><input type="checkbox" name="Deseja receber novidades" value="Sim"><span>Quero receber também novidades sobre outras atividades da Leoespanhol. (Opcional)</span></label>
  <button class="submit" type="submit">ENVIAR MEU CADASTRO DE INTERESSE</button>
@@ -337,14 +337,15 @@ form.addEventListener("submit",async function(ev){
  var controller=new AbortController();
  var timeout=setTimeout(function(){controller.abort();},18000);
  try{
-  var data={};new FormData(form).forEach(function(v,k){data[k]=String(v)});
-  var response=await fetch("https://formsubmit.co/ajax/contato@leoespanhol.com.br",{
-   method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
-   body:JSON.stringify(data),signal:controller.signal
+  var data=new FormData(form);
+  data.set("email",document.getElementById("email").value);
+  var response=await fetch(form.action,{
+   method:"POST",headers:{"Accept":"application/json"},
+   body:data,signal:controller.signal
   });
-  if(!response.ok)throw new Error("Servidor de envio indisponível (HTTP "+response.status+")");
+  if(!response.ok){var detail="";try{var e=await response.json();detail=Array.isArray(e.errors)?e.errors.map(function(x){return x.message}).join("; "):"";}catch(ignore){}throw new Error("Servidor de envio indisponível (HTTP "+response.status+")"+(detail?": "+detail:""));}
   var result=await response.json();
-  if(result.success!==true && result.success!=="true")throw new Error("O servidor não confirmou o recebimento");
+  if(result.errors && result.errors.length)throw new Error("O servidor não confirmou o recebimento");
   window.location.assign("./obrigado.html");
  }catch(error){
   console.warn("Falha ao enviar cadastro:",error);
