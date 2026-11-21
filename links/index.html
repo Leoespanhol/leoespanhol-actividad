@@ -223,7 +223,7 @@ svg{display:block}
  <select id="nivel" name="Nível de espanhol"><option value="Não informado">Selecione, se desejar</option><option>Iniciante</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1 ou superior</option><option>Falante nativo</option></select>
  <fieldset><legend id="prefer-title">Como gostaria de participar?</legend><div id="preferences"></div></fieldset>
  <label for="obs">Mensagem ou observação (opcional)</label><textarea id="obs" name="Mensagem" maxlength="1000" placeholder="Conte-nos seus interesses ou dúvidas."></textarea>
- <p class="notice">Seus dados serão registrados no Google Sheets da Leoespanhol após a ativação da integração. Não solicitamos CPF, documentos nem pagamento. Este cadastro não garante vaga.</p>
+ <p class="notice">Seus dados serão registrados na planilha institucional da Leoespanhol (Google Sheets). Não solicitamos CPF, documentos nem pagamento. Este cadastro não garante vaga.</p>
  <label class="tick"><input type="checkbox" name="Consentimento para cadastro" value="Sim" required><span>Autorizo o tratamento dos dados informados para o cadastro e contato relacionados à atividade selecionada. *</span></label>
  <label class="tick"><input type="checkbox" name="Deseja receber novidades" value="Sim"><span>Quero receber também novidades sobre outras atividades da Leoespanhol. (Opcional)</span></label>
  <button class="submit" type="submit">ENVIAR MEU CADASTRO DE INTERESSE</button>
@@ -316,7 +316,7 @@ if(key==="apoio-pix"||key==="apoio-colaborar"){
 }
 var root=document.getElementById("preferences");c.options.forEach(function(opt){var lbl=document.createElement("label");lbl.className="tick";var box=document.createElement("input");box.type="checkbox";box.name="Interesse: "+opt;box.value="Sim";lbl.appendChild(box);var span=document.createElement("span");span.textContent=opt;lbl.appendChild(span);root.appendChild(lbl);});
 // Insira aqui somente a URL /exec gerada em Implantar > Nova implantação > Aplicativo da Web.
-var GOOGLE_SHEETS_WEBAPP_URL = "";
+var GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/a/macros/leoespanhol.com.br/s/AKfycby4szOtOyujdx7U-UnekrbxmQQjcVhxWQsuf__GCymLGCHGm0de9fnHkGnbxzS003ES/exec";
 var form=document.getElementById("cadastro");
 var feedback=document.getElementById("send-status");
 var actions=document.getElementById("fallback-actions");
@@ -370,7 +370,7 @@ form.addEventListener("submit",function(ev){
  actions.hidden=true;
 
  // O destino é exclusivamente o Apps Script publicado na conta institucional.
- if(!/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(GOOGLE_SHEETS_WEBAPP_URL)){
+ if(!/^https:\/\/script\.google\.com\/(?:a\/macros\/[A-Za-z0-9.-]+\/s\/|macros\/s\/)[A-Za-z0-9_-]+\/exec$/.test(GOOGLE_SHEETS_WEBAPP_URL)){
   status("Estamos concluindo a integração com o Google Sheets. Este cadastro ainda não pode ser enviado automaticamente. Você pode copiar os dados ou encaminhá-los por e-mail; não considere a inscrição confirmada.","error");
   actions.hidden=false;
   return;
