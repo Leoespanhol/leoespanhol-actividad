@@ -207,11 +207,12 @@ svg{display:block}
  <p class="eyebrow" style="color:#99702b">Leoespanhol 2027</p>
  <h2 id="form-title">Cadastro de interesse</h2>
  <p class="intro" id="form-desc">Preencha seus dados para receber informações.</p>
- <form id="cadastro" action="https://formspree.io/f/xkjngbpr" method="POST">
+ <form id="cadastro" action="" method="POST">
  <input type="hidden" name="_subject" id="subject" value="Cadastro Leoespanhol 2027">
  <input type="hidden" name="Origem do cadastro" value="Central Leoespanhol 2027">
  
  <input type="hidden" name="Atividade escolhida" id="activity">
+ <input type="hidden" name="request_id" id="request-id">
  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
  <label for="nome">Nome completo *</label><input id="nome" type="text" name="Nome" autocomplete="name" minlength="3" maxlength="120" required>
  <label for="email">E-mail *</label><input id="email" type="email" name="Email" autocomplete="email" maxlength="200" required>
@@ -222,7 +223,7 @@ svg{display:block}
  <select id="nivel" name="Nível de espanhol"><option value="Não informado">Selecione, se desejar</option><option>Iniciante</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1 ou superior</option><option>Falante nativo</option></select>
  <fieldset><legend id="prefer-title">Como gostaria de participar?</legend><div id="preferences"></div></fieldset>
  <label for="obs">Mensagem ou observação (opcional)</label><textarea id="obs" name="Mensagem" maxlength="1000" placeholder="Conte-nos seus interesses ou dúvidas."></textarea>
- <p class="notice">Seus dados serão enviados pelo Formspree e usados para administrar este cadastro e entrar em contato sobre a atividade escolhida. Não solicitamos CPF, documentos nem pagamento. Este cadastro de interesse não garante vaga.</p>
+ <p class="notice">Seus dados serão registrados no Google Sheets da Leoespanhol após a ativação da integração. Não solicitamos CPF, documentos nem pagamento. Este cadastro não garante vaga.</p>
  <label class="tick"><input type="checkbox" name="Consentimento para cadastro" value="Sim" required><span>Autorizo o tratamento dos dados informados para o cadastro e contato relacionados à atividade selecionada. *</span></label>
  <label class="tick"><input type="checkbox" name="Deseja receber novidades" value="Sim"><span>Quero receber também novidades sobre outras atividades da Leoespanhol. (Opcional)</span></label>
  <button class="submit" type="submit">ENVIAR MEU CADASTRO DE INTERESSE</button>
@@ -231,7 +232,7 @@ svg{display:block}
   <button type="button" id="send-email">ABRIR E-MAIL COM OS DADOS</button>
   <button type="button" id="copy-registration">COPIAR MEU CADASTRO</button>
  </div>
- <p class="help">A inscrição só é considerada recebida após a confirmação do envio. Se houver falha de conexão, use as opções alternativas acima.</p>
+ <p class="help">O cadastro só estará concluído quando aparecer a confirmação de registro. Em caso de indisponibilidade, não considere os dados enviados.</p>
  </form>
  </div>
 </section>
@@ -314,6 +315,8 @@ if(key==="apoio-pix"||key==="apoio-colaborar"){
  var cityLabel=document.querySelector('label[for="cidade"]');if(cityLabel)cityLabel.textContent="Cidade e estado (opcional)";
 }
 var root=document.getElementById("preferences");c.options.forEach(function(opt){var lbl=document.createElement("label");lbl.className="tick";var box=document.createElement("input");box.type="checkbox";box.name="Interesse: "+opt;box.value="Sim";lbl.appendChild(box);var span=document.createElement("span");span.textContent=opt;lbl.appendChild(span);root.appendChild(lbl);});
+// Insira aqui somente a URL /exec gerada em Implantar > Nova implantação > Aplicativo da Web.
+var GOOGLE_SHEETS_WEBAPP_URL = "";
 var form=document.getElementById("cadastro");
 var feedback=document.getElementById("send-status");
 var actions=document.getElementById("fallback-actions");
@@ -353,31 +356,31 @@ function legacyCopy(content,done){
 }
 document.getElementById("send-email").addEventListener("click",openEmail);
 document.getElementById("copy-registration").addEventListener("click",copySignup);
-form.addEventListener("submit",async function(ev){
+form.addEventListener("submit",function(ev){
  ev.preventDefault();
  if(!form.reportValidity())return;
  actions.hidden=true;
- status("Enviando seus dados. Não feche esta página até aparecer o resultado.","info");
- submit.disabled=true;
- submit.textContent="ENVIANDO...";
- var controller=new AbortController();
- var timeout=setTimeout(function(){controller.abort();},18000);
- try{
-  var data=new FormData(form);
-  data.set("email",document.getElementById("email").value);
-  var response=await fetch(form.action,{
-   method:"POST",headers:{"Accept":"application/json"},
-   body:data,signal:controller.signal
-  });
-  if(!response.ok){var detail="";try{var e=await response.json();detail=Array.isArray(e.errors)?e.errors.map(function(x){return x.message}).join("; "):"";}catch(ignore){}throw new Error("Servidor de envio indisponível (HTTP "+response.status+")"+(detail?": "+detail:""));}
-  var result=await response.json();
-  if(result.errors && result.errors.length)throw new Error("O servidor não confirmou o recebimento");
-  window.location.assign("./obrigado.html");
- }catch(error){
-  console.warn("Falha ao enviar cadastro:",error);
-  status("Não foi possível confirmar o recebimento do seu cadastro. Os dados continuam preenchidos nesta página. Você pode enviá-los por e-mail ou copiá-los; não considere a inscrição concluída até receber confirmação da Leoespanhol.","error");
+
+ // O destino é exclusivamente o Apps Script publicado na conta institucional.
+ if(!/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(GOOGLE_SHEETS_WEBAPP_URL)){
+  status("Estamos concluindo a integração com o Google Sheets. Este cadastro ainda não pode ser enviado automaticamente. Você pode copiar os dados ou encaminhá-los por e-mail; não considere a inscrição confirmada.","error");
   actions.hidden=false;
- }finally{clearTimeout(timeout);submit.disabled=false;submit.textContent=originalLabel;}
+  return;
+ }
+ var requestId=document.getElementById("request-id");
+ if(!requestId.value){
+  requestId.value=window.crypto && window.crypto.randomUUID
+   ? window.crypto.randomUUID()
+   : "LEO"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2);
+ }
+ status("Enviando para a base de dados da Leoespanhol. Aguarde a página de confirmação do Google.","info");
+ submit.disabled=true;
+ submit.textContent="ENVIANDO AO GOOGLE SHEETS...";
+ form.method="POST";
+ form.action=GOOGLE_SHEETS_WEBAPP_URL;
+ form.target="_self";
+ // Envio nativo: o Apps Script só confirma depois de escrever no Sheets.
+ HTMLFormElement.prototype.submit.call(form);
 });
 })();
 </script>
