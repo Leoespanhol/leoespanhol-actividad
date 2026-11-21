@@ -100,7 +100,7 @@ svg{display:block}
 .tick input{width:17px;height:17px;accent-color:#ad7c26;flex:none;margin:1px 0 0}
 .help{font-size:12px;color:var(--muted);margin-top:6px}
 .submit{border:0;border-radius:12px;background:linear-gradient(105deg,#b98530,#f1d17e);color:#171b38;padding:15px;width:100%;font-size:15px;font-weight:850;cursor:pointer;margin-top:12px}
-.submit:hover{filter:brightness(1.05)}
+.submit:hover{filter:brightness(1.05)}.submit:disabled{opacity:.65;cursor:not-allowed}
 .notice{background:#faf3e5;border-left:3px solid #bc913e;padding:12px;border-radius:5px;font-size:12px;margin:16px 0;color:#5c512d}
 .send-status{border-radius:12px;margin:14px 0 8px;padding:13px;font-size:13px;line-height:1.55}
 .send-status.error{background:#fff1ee;border:1px solid #d6a39b;color:#6d2724}
@@ -356,6 +356,14 @@ function legacyCopy(content,done){
 }
 document.getElementById("send-email").addEventListener("click",openEmail);
 document.getElementById("copy-registration").addEventListener("click",copySignup);
+if(!GOOGLE_SHEETS_WEBAPP_URL){
+ feedback.hidden=false;
+ feedback.className="send-status info";
+ feedback.textContent="A integração do cadastro com o Google Sheets está sendo ativada. O formulário ainda não recebe inscrições automaticamente. Enquanto isso, utilize as opções de envio por e-mail ou cópia dos dados.";
+ actions.hidden=false;
+ submit.disabled=true;
+ submit.textContent="CADASTRO ONLINE EM ATIVAÇÃO";
+}
 form.addEventListener("submit",function(ev){
  ev.preventDefault();
  if(!form.reportValidity())return;
