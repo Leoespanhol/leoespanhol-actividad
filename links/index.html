@@ -90,6 +90,13 @@ svg{display:block}
 .formcard{background:#fff;border:1px solid var(--border);border-radius:22px;padding:24px;box-shadow:0 6px 24px #10153213}
 .formcard h2{font-size:25px;line-height:1.2;margin:0 0 10px;color:var(--navy)}
 .formcard .intro{font-size:14px;color:var(--muted);margin:0 0 18px}
+.extra-details{margin:16px 0;padding:14px 14px;background:#fffaf1;border:1px solid #e9dabc;border-radius:12px}
+.extra-details summary{cursor:pointer;font-size:15px;font-weight:750;color:var(--navy);padding:5px 0}
+.extra-details summary:hover{color:#99712d}
+.detail-opt{font-size:12px;color:#947438;font-weight:550}
+.inner-field{margin:13px 0 6px!important;padding:9px 12px!important;background:white}
+.inner-field legend{font-size:12px}
+.formcard .extra-details input:not([type=checkbox]),.formcard .extra-details select{background:white}
 .formcard label:not(.tick){display:block;font-weight:640;font-size:13px;margin:15px 0 6px}
 .formcard input:not([type=checkbox]),.formcard select,.formcard textarea{font:inherit;display:block;width:100%;border:1px solid #ced3db;border-radius:10px;background:#fff;padding:12px;color:#162447;min-height:45px}
 .formcard input:focus,.formcard select:focus,.formcard textarea:focus{outline:2px solid #deb967;outline-offset:1px}
@@ -145,7 +152,7 @@ svg{display:block}
    <summary class="linkcard group-heading"><span class="ico"><svg aria-hidden="true"><use href="#exp"/></svg></span><span class="label"><b>Experiências Imersivas 2027</b><small>Dia do Livro, Corrida, Hispanidade e outras experiências</small></span><span class="group-arrow" aria-hidden="true">⌄</span></summary>
    <div class="nested-list">
     <a class="linkcard subcard" href="https://docs.google.com/forms/d/e/1FAIpQLSdm1XNyQvaL5YO8yY86qXbQe_W14AKGhL5-SkWS4vCoHMjE3g/viewform"><span class="ico"><svg aria-hidden="true"><use href="#cal"/></svg></span><span class="label"><b>Dia do Livro e do Idioma 2027</b><small>Inscreva-se pelo Google Forms; respostas no Google Sheets</small></span><span class="chevron" aria-hidden="true">›</span></a>
-    <a class="linkcard subcard" href="https://docs.google.com/forms/d/e/1FAIpQLSfKukEgIq7Js6Blwk_NgMsYN-9LJ64P47kxqsi0bbGmWbP0DA/viewform"><span class="ico"><svg aria-hidden="true"><use href="#run"/></svg></span><span class="label"><b>Corrida das Nações 2027</b><small>Corrida, caminhada e integração</small></span><span class="chevron" aria-hidden="true">›</span></a>
+    <a class="linkcard subcard" href="https://docs.google.com/forms/d/e/1FAIpQLSfKukEgIq7Js6Blwk_NgMsYN-9LJ64P47kxqsi0bbGmWbP0DA/viewform"><span class="ico"><svg aria-hidden="true"><use href="#run"/></svg></span><span class="label"><b>Corrida das Nações 2027</b><small>Caminhada participativa e integração entre comunidades</small></span><span class="chevron" aria-hidden="true">›</span></a>
     <a class="linkcard subcard" href="https://docs.google.com/forms/d/e/1FAIpQLScY_KjJj6o97gA9kf2sbkA0vgPtPZxhKXRa5Yh1HHaCYwZe6g/viewform"><span class="ico"><svg aria-hidden="true"><use href="#award"/></svg></span><span class="label"><b>Dia da Hispanidade 2027</b><small>Encontro cultural e institucional</small></span><span class="chevron" aria-hidden="true">›</span></a>
     <a class="linkcard subcard" href="https://docs.google.com/forms/d/e/1FAIpQLScmsR78NvqLi_eV6_U1RErrsPwIY2KwelaLG9CT7Ey3f8Gu9Q/viewform"><span class="ico"><svg aria-hidden="true"><use href="#work"/></svg></span><span class="label"><b>Workshops e Palestras 2027</b><small>Oficinas e encontros com convidados</small></span><span class="chevron" aria-hidden="true">›</span></a>
     <a class="linkcard subcard" href="https://docs.google.com/forms/d/e/1FAIpQLScUKmCHApY0KMItW0BqAxy7hfTU8awLWolgBXjn1l2Ow5tUcQ/viewform"><span class="ico"><svg aria-hidden="true"><use href="#book"/></svg></span><span class="label"><b>Clube de Leitura 2027</b><small>Leitura, diálogo e encontros culturais</small></span><span class="chevron" aria-hidden="true">›</span></a>
@@ -221,7 +228,58 @@ svg{display:block}
  <label for="pais">País</label><input id="pais" name="País" type="text" maxlength="90" value="Brasil">
  <label for="nivel">Seu nível de espanhol (opcional)</label>
  <select id="nivel" name="Nível de espanhol"><option value="Não informado">Selecione, se desejar</option><option>Iniciante</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1 ou superior</option><option>Falante nativo</option></select>
- <fieldset><legend id="prefer-title">Como gostaria de participar?</legend><div id="preferences"></div></fieldset>
+ <div id="imersao-perfil" hidden>
+ <details class="extra-details">
+ <summary>Seu perfil e conexões <span class="detail-opt">(opcional)</span></summary>
+ <label for="perfil-prof">Qual é seu perfil principal?</label>
+ <select id="perfil-prof" name="Perfil profissional/social">
+ <option value="">Selecione, se desejar</option>
+ <option>Estudante</option><option>Professor(a) ou educador(a)</option>
+ <option>Empresário(a) ou empreendedor(a)</option>
+ <option>Profissional de outra área</option><option>Representante institucional</option>
+ <option>Integrante da comunidade / interessado(a)</option><option>Outro</option>
+ </select>
+ <fieldset class="inner-field"><legend>Qual é seu vínculo com a Leoespanhol?</legend>
+ <div id="vinculos"></div></fieldset>
+ <label for="lingua-materna">O espanhol é sua língua materna?</label>
+ <select id="lingua-materna" name="Espanhol língua materna">
+ <option value="">Prefiro não informar</option><option>Sim</option><option>Não</option>
+ </select>
+ <label for="nacionalidade">Nacionalidade ou país de origem</label>
+ <input id="nacionalidade" name="Nacionalidade / origem" type="text" maxlength="100" placeholder="Opcional">
+ <label for="tipo-instituicao">Que tipo de instituição representa?</label>
+ <select id="tipo-instituicao" name="Tipo de instituição">
+ <option value="">Não se aplica / prefiro não informar</option>
+ <option>Empresa ou empreendimento</option><option>Escola ou universidade</option>
+ <option>Associação ou organização social</option><option>Consulado ou órgão público</option>
+ <option>Igreja ou comunidade religiosa</option><option>Outra instituição</option>
+ </select>
+ <label for="instituicao">Nome da instituição e sua função</label>
+ <input id="instituicao" name="Nome da instituição / função" maxlength="200" type="text" placeholder="Opcional">
+ </details>
+</div>
+<div id="imersao-papel" hidden>
+ <label for="papel-evento">Como deseja participar? *</label>
+ <select id="papel-evento" name="Papel no evento">
+ <option value="">Selecione uma opção</option>
+ </select>
+</div>
+<fieldset><legend id="prefer-title">Como gostaria de participar?</legend><div id="preferences"></div></fieldset>
+<div id="imersao-acessibilidade" hidden>
+ <label for="acessibilidade">Deseja receber contato sobre recursos de acessibilidade?</label>
+ <select id="acessibilidade" name="Contato acessibilidade">
+ <option value="">Não informado</option><option>Sim</option><option>Não</option>
+ </select>
+</div>
+<div id="imersao-apoio" hidden>
+ <details class="extra-details">
+ <summary>Apoie nosso propósito <span class="detail-opt">(voluntário)</span></summary>
+ <p class="help">Organizar essas experiências envolve despesas com estrutura, materiais, convidados e logística. Se puder, colabore espontaneamente. Sua inscrição não depende de contribuição.</p>
+ <fieldset class="inner-field"><legend>Como gostaria de colaborar?</legend><div id="apoios-imersivos"></div></fieldset>
+ <p class="pix-help">Pix CNPJ Leoespanhol: <strong>54.747.133/0001-55</strong>. Valor livre. Confira o destinatário no aplicativo bancário.</p>
+ <label class="tick"><input type="checkbox" name="Lembrete de colaboração" value="Sim"><span>Quero receber informações sobre colaboração mais perto da data. (Opcional)</span></label>
+ </details>
+</div>
  <label for="obs">Mensagem ou observação (opcional)</label><textarea id="obs" name="Mensagem" maxlength="1000" placeholder="Conte-nos seus interesses ou dúvidas."></textarea>
  <p class="notice">Seus dados serão registrados na planilha institucional da Leoespanhol (Google Sheets). Não solicitamos CPF, documentos nem pagamento. Este cadastro não garante vaga.</p>
  <label class="tick"><input type="checkbox" name="Consentimento para cadastro" value="Sim" required><span>Autorizo o tratamento dos dados informados para o cadastro e contato relacionados à atividade selecionada. *</span></label>
@@ -253,31 +311,61 @@ var configs={
 "apoio-colaborar":{title:"Quero colaborar com o projeto",desc:"Conte como gostaria de apoiar as iniciativas educativas, culturais e comunitárias da Leoespanhol.",options:["Doar materiais ou equipamentos","Oferecer serviços ou conhecimentos","Atuar como voluntário","Apoiar um evento como patrocinador","Propor parceria institucional"]}
 };
 var key=new URLSearchParams(window.location.search).get("atividade");
-var formulariosImersivos2027 = {
- "corrida": "https://docs.google.com/forms/d/e/1FAIpQLSfKukEgIq7Js6Blwk_NgMsYN-9LJ64P47kxqsi0bbGmWbP0DA/viewform",
- "hispanidade": "https://docs.google.com/forms/d/e/1FAIpQLScY_KjJj6o97gA9kf2sbkA0vgPtPZxhKXRa5Yh1HHaCYwZe6g/viewform",
- "workshops": "https://docs.google.com/forms/d/e/1FAIpQLScmsR78NvqLi_eV6_U1RErrsPwIY2KwelaLG9CT7Ey3f8Gu9Q/viewform",
- "clube": "https://docs.google.com/forms/d/e/1FAIpQLScUKmCHApY0KMItW0BqAxy7hfTU8awLWolgBXjn1l2Ow5tUcQ/viewform",
- "imersoes": "https://docs.google.com/forms/d/e/1FAIpQLSc4ElVKoSHeJmPPlCKtzbxw2tLV9HgXiC_LMoBBAae4B95wOg/viewform",
- "culto": "https://docs.google.com/forms/d/e/1FAIpQLSdnqwNNuptZgQLytA0ke-x1yTxdSI-RKU9Yhiy7Pho-vCNlMg/viewform"
+var experenciasImersivas = {
+ "dia-livro":{
+  title:"Dia do Livro e do Idioma 2027",
+  desc:"Encontro educativo e intercultural previsto para 24 de abril de 2027, em São Bernardo do Campo. Cadastro de interesse, sujeito à confirmação de participação.",
+  roles:["Participante do público","Convidado(a) especial","Palestrante ou apresentador(a) convidado(a)","Tenho interesse em apresentar atividade","Representante institucional","Voluntário(a) ou equipe de apoio"],
+  options:["Palestras e literatura","Atividades culturais","Conhecer a comunidade","Voluntariado e organização"],
+  support:["Contribuição financeira voluntária via Pix","Quero ajudar no café coletivo","Materiais, equipamentos ou serviços","Apoio à organização e aos palestrantes","Parceria institucional","Prefiro decidir mais perto da data"]
+ },
+ "corrida":{
+  title:"Caminhada das Nações 2027",
+  desc:"Caminhada comunitária, inclusiva e intercultural planejada para 2027. A data, o local, as condições de participação e o percurso serão confirmados posteriormente.",
+  roles:["Participante da caminhada","Acompanhante ou familiar","Voluntário(a)","Parceiro(a) institucional","Apoiador(a)"],
+  options:["Caminhada participativa","Integração entre comunidades","Atividade com família e amigos","Voluntariado"],
+  support:["Contribuição financeira voluntária via Pix","Materiais e equipamentos de apoio","Organização ou acolhimento","Parceria ou patrocínio","Prefiro decidir mais perto da data"]
+ },
+ "hispanidade":{
+  title:"Dia da Hispanidade 2027",
+  desc:"Celebração cultural e institucional das conexões entre o Brasil e os países de língua espanhola. Data e programação serão anunciadas.",
+  roles:["Participante do público","Convidado(a) especial","Palestrante ou apresentador(a) convidado(a)","Tenho interesse em apresentar atividade","Representante institucional","Voluntário(a)"],
+  options:["Cultura e identidade hispânica","Palestras e testemunhos","Apresentações artísticas","Intercâmbio e conexões"],
+  support:["Contribuição financeira voluntária via Pix","Quero ajudar no café coletivo","Materiais, equipamentos ou serviços","Apoio à organização e aos convidados","Patrocínio ou parceria institucional","Prefiro decidir mais perto da data"]
+ },
+ "workshops":{
+  title:"Workshops e Palestras 2027",
+  desc:"Oficinas, conferências e experiências práticas de aprendizagem. Calendário e eventuais condições de participação serão divulgados antes da confirmação.",
+  roles:["Participante","Professor(a) ou educador(a)","Palestrante ou facilitador(a) convidado(a)","Tenho interesse em propor uma oficina","Representante institucional","Voluntário(a)"],
+  options:["Espanhol e comunicação","Educação e metodologias","Empreendedorismo","Carreira e internacionalização","Cultura e América Latina"],
+  support:["Contribuição financeira voluntária via Pix","Materiais ou serviços","Apoio aos palestrantes","Voluntariado","Patrocínio ou parceria","Prefiro decidir mais perto da data"]
+ },
+ "clube":{
+  title:"Clube de Leitura 2027",
+  desc:"Encontros de leitura compartilhada, literatura hispano-americana e conversação. Formato e programação ainda serão anunciados.",
+  roles:["Leitor(a) participante","Estudante de espanhol","Professor(a) ou educador(a)","Quero ajudar a mediar leituras","Convidado(a) ou colaborador(a)"],
+  options:["Literatura hispano-americana","Contos e crônicas","Leitura em espanhol para iniciantes","Rodas de conversa","Autores convidados"],
+  support:["Contribuição financeira voluntária via Pix","Livros e materiais","Mediação de encontros","Parceria cultural","Prefiro decidir mais perto da data"]
+ },
+ "imersoes":{
+  title:"Encontros Culturais e Gastronômicos 2027",
+  desc:"Vivências de cultura, gastronomia, convivência e conversação em espanhol. Datas e locais serão comunicados posteriormente.",
+  roles:["Participante","Quero apresentar uma tradição cultural","Professor(a) ou facilitador(a)","Voluntário(a)","Representante institucional"],
+  options:["Experiências gastronômicas","Encontros culturais","Conversação em espanhol","Tradições hispano-americanas","Colaboração com atividades"],
+  support:["Contribuição financeira voluntária via Pix","Quero ajudar no café coletivo","Materiais ou serviços","Apoio à organização","Parceria institucional","Prefiro decidir mais perto da data"]
+ },
+ "culto":{
+  title:"Culto em Espanhol 2027",
+  desc:"Cadastro de interesse para um encontro de culto em espanhol, com participação voluntária. Data, local e programação ainda serão confirmados.",
+  roles:["Participante","Convidado(a)","Voluntário(a)","Quero colaborar com alguma atividade","Representante de instituição"],
+  options:["Participar do encontro","Receber informações da programação","Acolhimento e organização","Música ou leituras"],
+  support:["Contribuição financeira voluntária via Pix","Materiais e serviços","Voluntariado e acolhimento","Parceria institucional","Prefiro decidir mais perto da data"]
+ }
 };
-// Mantém links antigos de atividades funcionando, mesmo após a migração.
-if(key && formulariosImersivos2027[key]) {
- window.location.replace(formulariosImersivos2027[key]);
- return;
-}
-if(key==="dia-livro"){
- document.getElementById("landing").hidden=true;
- var replacement=document.getElementById("registration");
- replacement.hidden=false;
- var title=document.getElementById("form-title");
- title.textContent="Inscrição — Dia do Livro e do Idioma 2027";
- document.getElementById("form-desc").textContent="O formulário de inscrição foi transferido para o Google Forms, conectado ao Google Sheets institucional.";
- var oldForm=document.getElementById("cadastro");oldForm.hidden=true;
- var link=document.createElement("a");link.href="https://docs.google.com/forms/d/e/1FAIpQLSdm1XNyQvaL5YO8yY86qXbQe_W14AKGhL5-SkWS4vCoHMjE3g/viewform";link.className="submit";link.style.display="block";link.style.textAlign="center";link.style.textDecoration="none";link.textContent="ABRIR INSCRIÇÃO NO GOOGLE FORMS";
- oldForm.parentNode.appendChild(link);
- document.title="Inscrição Dia do Livro 2027 | Leoespanhol";
- return;
+// Novos formulários próprios podem ser visualizados antes de ativar o recebimento.
+var ATIVIDADES_IMERSIVAS_ATIVADAS = false;
+if(key && experenciasImersivas[key]){
+ configs[key] = experenciasImersivas[key];
 }
 if(key==="apoio-pix"){
  document.getElementById("landing").hidden=true;
@@ -314,6 +402,27 @@ if(key==="apoio-pix"||key==="apoio-colaborar"){
  var city=document.getElementById("cidade");city.required=false;
  var cityLabel=document.querySelector('label[for="cidade"]');if(cityLabel)cityLabel.textContent="Cidade e estado (opcional)";
 }
+var imersaoAtual = Boolean(experenciasImersivas[key]);
+if (imersaoAtual) {
+ document.getElementById("imersao-perfil").hidden=false;
+ document.getElementById("imersao-papel").hidden=false;
+ document.getElementById("imersao-acessibilidade").hidden=false;
+ document.getElementById("imersao-apoio").hidden=false;
+ document.getElementById("papel-evento").required=true;
+ var roleSelect=document.getElementById("papel-evento");
+ c.roles.forEach(function(role){var o=document.createElement("option");o.value=role;o.textContent=role;roleSelect.appendChild(o);});
+ document.getElementById("prefer-title").textContent="O que desperta seu interesse nesta atividade? (opcional)";
+ document.getElementById("form-title").textContent="Pré-inscrição — "+c.title;
+ document.getElementById("registration").querySelector(".notice").textContent="Pré-inscrição gratuita de interesse; não garante vaga. Eventuais custos obrigatórios serão informados antes da confirmação. Colaborações financeiras ou materiais são sempre voluntárias.";
+ var vinculos=["Aluno(a) atual","Ex-aluno(a)","Comunidade Leoespanhol","Parceiro(a) institucional","Convidado(a)","Primeiro contato com a Leoespanhol"];
+ var makeCheck=function(node, name, option){
+  var label=document.createElement("label");label.className="tick";
+  var checkbox=document.createElement("input");checkbox.type="checkbox";checkbox.name=name+option;checkbox.value="Sim";
+  var span=document.createElement("span");span.textContent=option;label.appendChild(checkbox);label.appendChild(span);node.appendChild(label);
+ };
+ vinculos.forEach(function(v){makeCheck(document.getElementById("vinculos"),"Vínculo: ",v);});
+ c.support.forEach(function(v){makeCheck(document.getElementById("apoios-imersivos"),"Apoio: ",v);});
+}
 var root=document.getElementById("preferences");c.options.forEach(function(opt){var lbl=document.createElement("label");lbl.className="tick";var box=document.createElement("input");box.type="checkbox";box.name="Interesse: "+opt;box.value="Sim";lbl.appendChild(box);var span=document.createElement("span");span.textContent=opt;lbl.appendChild(span);root.appendChild(lbl);});
 // Insira aqui somente a URL /exec gerada em Implantar > Nova implantação > Aplicativo da Web.
 var GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/a/macros/leoespanhol.com.br/s/AKfycby4szOtOyujdx7U-UnekrbxmQQjcVhxWQsuf__GCymLGCHGm0de9fnHkGnbxzS003ES/exec";
@@ -322,6 +431,10 @@ var feedback=document.getElementById("send-status");
 var actions=document.getElementById("fallback-actions");
 var submit=form.querySelector('button[type="submit"]');
 var originalLabel=submit.textContent;
+if(imersaoAtual){
+ originalLabel="ENVIAR MINHA PRÉ-INSCRIÇÃO";
+ submit.textContent=originalLabel;
+}
 function status(text,type){
  feedback.hidden=false;
  feedback.className="send-status "+type;
@@ -356,7 +469,14 @@ function legacyCopy(content,done){
 }
 document.getElementById("send-email").addEventListener("click",openEmail);
 document.getElementById("copy-registration").addEventListener("click",copySignup);
-if(!GOOGLE_SHEETS_WEBAPP_URL){
+if(imersaoAtual && !ATIVIDADES_IMERSIVAS_ATIVADAS){
+ feedback.hidden=false;
+ feedback.className="send-status info";
+ feedback.textContent="Formulário pronto para visualização. O recebimento desta atividade está sendo conectado à base própria do Google Sheets; as inscrições continuam disponíveis provisoriamente pelos links existentes.";
+ submit.disabled=true;
+ submit.textContent="PRÉ-INSCRIÇÃO EM ATIVAÇÃO";
+ actions.hidden=true;
+} else if(!GOOGLE_SHEETS_WEBAPP_URL){
  feedback.hidden=false;
  feedback.className="send-status info";
  feedback.textContent="A integração do cadastro com o Google Sheets está sendo ativada. O formulário ainda não recebe inscrições automaticamente. Enquanto isso, utilize as opções de envio por e-mail ou cópia dos dados.";
@@ -370,6 +490,10 @@ form.addEventListener("submit",function(ev){
  actions.hidden=true;
 
  // O destino é exclusivamente o Apps Script publicado na conta institucional.
+ if(imersaoAtual && !ATIVIDADES_IMERSIVAS_ATIVADAS){
+  status("O recebimento desta experiência ainda está em ativação. O formulário não foi enviado.","error");
+  return;
+ }
  if(!/^https:\/\/script\.google\.com\/(?:a\/macros\/[A-Za-z0-9.-]+\/s\/|macros\/s\/)[A-Za-z0-9_-]+\/exec$/.test(GOOGLE_SHEETS_WEBAPP_URL)){
   status("Estamos concluindo a integração com o Google Sheets. Este cadastro ainda não pode ser enviado automaticamente. Você pode copiar os dados ou encaminhá-los por e-mail; não considere a inscrição confirmada.","error");
   actions.hidden=false;
