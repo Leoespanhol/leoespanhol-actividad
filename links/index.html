@@ -452,7 +452,7 @@ if (imersaoAtual) {
 }
 var root=document.getElementById("preferences");c.options.forEach(function(opt){var lbl=document.createElement("label");lbl.className="tick";var box=document.createElement("input");box.type="checkbox";box.name="Interesse: "+opt;box.value="Sim";lbl.appendChild(box);var span=document.createElement("span");span.textContent=opt;lbl.appendChild(span);root.appendChild(lbl);});
 // Insira aqui somente a URL /exec gerada em Implantar > Nova implantação > Aplicativo da Web.
-var GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/a/macros/leoespanhol.com.br/s/AKfycby4szOtOyujdx7U-UnekrbxmQQjcVhxWQsuf__GCymLGCHGm0de9fnHkGnbxzS003ES/exec";
+var GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycby4szOtOyujdx7U-UnekrbxmQQjcVhxWQsuf__GCymLGCHGm0de9fnHkGnbxzS003ES/exec";
 var form=document.getElementById("cadastro");
 var feedback=document.getElementById("send-status");
 var actions=document.getElementById("fallback-actions");
@@ -532,7 +532,7 @@ form.addEventListener("submit",function(ev){
    ? window.crypto.randomUUID()
    : "LEO"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2);
  }
- status("Enviando para a base de dados da Leoespanhol. Aguarde a página de confirmação do Google.","info");
+ status("Enviando para a base de dados da Leoespanhol. Aguarde a confirmação da sua inscrição.","info");
  submit.disabled=true;
  submit.textContent="ENVIANDO AO GOOGLE SHEETS...";
  form.method="POST";
