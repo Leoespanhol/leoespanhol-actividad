@@ -174,7 +174,7 @@ footer{padding:28px 0 40px;color:#788295;font-size:13px}.footer{border-top:1px s
 .enroll-27-field input,.enroll-27-field select,.enroll-27-field textarea{width:100%;padding:13px;border:1.5px solid #cdd8e5;border-radius:12px;background:#fff;color:#173955;font:inherit}
 .enroll-27-field input:focus,.enroll-27-field select:focus{outline:2px solid #d5aa55;outline-offset:1px}
 .enroll-27-field small{color:#728198;font-size:11px;line-height:1.5;display:block;margin-top:5px}
-.enroll-27-field[hidden]{display:none!important}
+.enroll-27-field[hidden]{display:none!important} .enroll-27-subtitle{font-size:16px;font-weight:900;color:#123653;margin:20px 0 16px;padding:0 0 10px;border-bottom:1px solid #dce4ed}
 .enroll-27-table{background:#f6f8fc;border:1px solid #dce4ed;border-radius:15px;padding:15px;margin:15px 0;font-size:14px;color:#284363;line-height:1.6}
 .enroll-27-table strong{color:#0e3154}
 .enroll-27-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-top:1px solid #e4e8ed;padding-top:20px;margin-top:20px}
@@ -450,10 +450,29 @@ footer{padding:28px 0 40px;color:#788295;font-size:13px}.footer{border-top:1px s
 </div>
 <div class="enroll-27-panel" data-stage="3">
 <h3>3. Seus dados para a matrícula</h3>
-<p>Informe os dados de contato para receber o contrato e as orientações do próximo passo. Os dados de documento (CPF, nascimento e endereço completo) serão solicitados no ambiente seguro de assinatura contratual, não por este formulário público.</p>
+<p>Preencha os dados pessoais e o endereço que serão utilizados na elaboração do seu contrato de prestação de serviços educacionais. Confira as informações antes de enviar.</p>
 <div class="enroll-27-field"><label for="fullName2027">Nome completo *</label><input autocomplete="name" id="fullName2027" maxlength="120" name="Nome completo" placeholder="Como consta no seu documento" required=""/></div>
+<div class="enroll-27-row">
+  <div class="enroll-27-field"><label for="cpf2027">CPF *</label><input autocomplete="off" id="cpf2027" name="CPF do contratante" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" required=""/><small>Informe o CPF do responsável pela contratação.</small></div>
+  <div class="enroll-27-field"><label for="birthDate2027">Data de nascimento *</label><input id="birthDate2027" name="Data de nascimento" type="date" min="1900-01-01" required=""/><small>Usada para identificação no contrato.</small></div>
+</div>
 <div class="enroll-27-row"><div class="enroll-27-field"><label for="email2027">E-mail *</label><input autocomplete="email" id="email2027" name="email" placeholder="voce@exemplo.com" required="" type="email"/></div><div class="enroll-27-field"><label for="phone2027">WhatsApp *</label><input autocomplete="tel" id="phone2027" name="WhatsApp" placeholder="(11) 99999-9999" required="" type="tel"/></div></div>
-<div class="enroll-27-row"><div class="enroll-27-field"><label for="city2027">Cidade / UF *</label><input autocomplete="address-level2" id="city2027" name="Cidade e UF" placeholder="São Bernardo do Campo / SP" required=""/></div><div class="enroll-27-field"><label for="source2027">Como nos conheceu?</label><select id="source2027" name="Origem"><option>Indicação</option><option>Instagram</option><option>Pesquisa no Google</option><option>Evento cultural</option><option>WhatsApp</option><option>Outros</option></select></div></div>
+<div class="enroll-27-subtitle">Endereço para o contrato</div>
+<div class="enroll-27-row">
+  <div class="enroll-27-field"><label for="zip2027">CEP *</label><input autocomplete="postal-code" id="zip2027" inputmode="numeric" maxlength="9" name="CEP" placeholder="00000-000" required=""/></div>
+  <div class="enroll-27-field"><label for="district2027">Bairro *</label><input autocomplete="address-level3" id="district2027" maxlength="100" name="Bairro" placeholder="Seu bairro" required=""/></div>
+</div>
+<div class="enroll-27-field"><label for="street2027">Rua / avenida / logradouro *</label><input autocomplete="address-line1" id="street2027" maxlength="160" name="Logradouro" placeholder="Ex.: Rua das Flores" required=""/></div>
+<div class="enroll-27-row">
+  <div class="enroll-27-field"><label for="number2027">Número *</label><input id="number2027" name="Número do imóvel" maxlength="18" placeholder="Ex.: 123 ou S/N" required=""/></div>
+  <div class="enroll-27-field"><label for="complement2027">Complemento (opcional)</label><input autocomplete="address-line2" id="complement2027" name="Complemento" maxlength="110" placeholder="Apartamento, bloco, sala..."></div>
+</div>
+<div class="enroll-27-row">
+  <div class="enroll-27-field"><label for="city2027">Cidade *</label><input autocomplete="address-level2" id="city2027" name="Cidade" maxlength="100" placeholder="São Bernardo do Campo" required=""/></div>
+  <div class="enroll-27-field"><label for="state2027">Estado (UF) *</label><input autocomplete="address-level1" id="state2027" name="UF" maxlength="2" placeholder="SP" required=""/></div>
+</div>
+<div class="enroll-27-field"><label for="source2027">Como nos conheceu?</label><select id="source2027" name="Origem"><option>Indicação</option><option>Instagram</option><option>Pesquisa no Google</option><option>Evento cultural</option><option>WhatsApp</option><option>Outros</option></select></div>
+<p class="enroll-27-privacy">Se você é menor de 18 anos ou sua matrícula será feita por uma empresa, a Academia entrará em contato para identificar o responsável legal ou o contratante.</p>
 <div class="enroll-27-actions"><button class="enroll-27-outline" data-back="2" type="button">Voltar ao pagamento</button><button class="enroll-27-primary" data-next="4" type="button">Conferir minha matrícula</button></div><span class="enroll-27-msg" id="error3-2027" role="alert"></span>
 </div>
 <div class="enroll-27-panel" data-stage="4">
@@ -461,9 +480,9 @@ footer{padding:28px 0 40px;color:#788295;font-size:13px}.footer{border-top:1px s
 <p>Confira treinamento, turma, datas, investimento e seus dados. Você receberá as orientações para assinatura eletrônica do contrato. O envio deste formulário não significa que o pagamento foi confirmado.</p>
 <div class="enroll-27-table"><table class="enroll-27-summary"><tbody id="review2027"></tbody></table></div>
 <div class="enroll-27-status"><strong>Como termina a matrícula?</strong> A Academia confere o pagamento e a disponibilidade da turma, prepara o contrato para assinatura eletrônica e, após a formalização, envia a confirmação e as boas-vindas. A escolha de horário sozinha não bloqueia uma vaga.</div>
-<label class="enroll-27-check"><input id="consent2027" required="" type="checkbox"/><span>Autorizo o tratamento dos dados informados para atendimento, matrícula e envio de documentos e informações do treinamento, conforme a política de privacidade. Sei que a confirmação depende de contrato, pagamento e abertura da turma.</span></label>
+<label class="enroll-27-check"><input id="consent2027" required="" type="checkbox"/><span>Autorizo o uso dos meus dados para preparar o contrato e organizar minha matrícula. Estou ciente de que nome, CPF, nascimento, endereço e contato serão transmitidos à Leoespanhol pelo serviço de formulários FormSubmit, por conexão HTTPS. A matrícula só será confirmada após contrato, pagamento e abertura da turma.</span></label>
 <div class="enroll-27-actions"><button class="enroll-27-outline" data-back="3" type="button">Corrigir dados</button><button class="enroll-27-primary" id="sendEnrollment2027" type="submit">Enviar dados para meu contrato</button></div><span class="enroll-27-msg" id="error4-2027" role="alert"></span>
-<p class="enroll-27-privacy">Este formulário envia somente dados básicos de contato à Leoespanhol via FormSubmit. CPF e demais dados contratuais serão recolhidos no sistema de assinatura. O e-mail de boas-vindas só será enviado depois da matrícula confirmada.</p>
+<p class="enroll-27-privacy">Os dados pessoais e contratuais deste cadastro são enviados à Leoespanhol via FormSubmit (serviço terceirizado) para preparação do contrato. Não são incorporados ao Pix nem aos links de WhatsApp. O envio não equivale à assinatura, ao pagamento ou à vaga confirmada.</p>
 </div>
 </form>
 </div>
@@ -652,17 +671,39 @@ currentLang=detectInitialLang();translateStatic(currentLang);
   $('matPixCopyKey2027').addEventListener('click',()=>copyPix('54.747.133/0001-55','Chave Pix copiada. Confirme o valor no banco.'));
   $('matPixCopyCode2027').addEventListener('click',()=>copyPix($('matPixPayload2027').value,'Pix Copia e Cola copiado. Confirme o destinatário e o valor no banco.'));
   function stage(n){document.querySelectorAll('.enroll-27-panel').forEach(p=>p.classList.toggle('active',p.dataset.stage===String(n)));document.querySelectorAll('.enroll-27-steps>div').forEach(d=>d.classList.toggle('current',d.dataset.progress===String(n)));$('matricula2027').scrollIntoView({behavior:'smooth',block:'start'});}
+  function cpfIsValid(value){
+    const d=String(value||'').replace(/\D/g,'');
+    if(d.length!==11 || /^(\d)\1{10}$/.test(d))return false;
+    for(let k=9;k<=10;k++){let sum=0;for(let j=0;j<k;j++)sum+=Number(d[j])*(k+1-j);let digit=(sum*10)%11;if(digit===10)digit=0;if(digit!==Number(d[k]))return false;}
+    return true;
+  }
+  $('cpf2027').addEventListener('input',function(){
+    const d=this.value.replace(/\D/g,'').slice(0,11);
+    this.value=d.replace(/^(\d{3})(\d)/,'$1.$2').replace(/^(\d{3}\.\d{3})(\d)/,'$1.$2').replace(/(\d{3}\.\d{3}\.\d{3})(\d)/,'$1-$2');
+  });
+  $('zip2027').addEventListener('input',function(){const d=this.value.replace(/\D/g,'').slice(0,8);this.value=d.replace(/^(\d{5})(\d)/,'$1-$2');});
+  $('state2027').addEventListener('input',function(){this.value=this.value.replace(/[^a-zA-Z]/g,'').slice(0,2).toUpperCase();});
   function validate(n){
     $('error'+n+'-2027').textContent='';
     if(n===1){if(mode.value==='group'&&(!day.value||(day.value==='other'&&!str('groupOther2027'))||(day.value!=='other'&&!slot.value))){$('error1-2027').textContent='Escolha o dia e o horário da turma ou descreva sua sugestão.';return false;}
       if(mode.value!=='group'&&(!vipDay.value||!vipTime.value||((vipDay.value==='A combinar'||vipTime.value==='flex')&&!str('enrollVipNotes2027')))){$('error1-2027').textContent='Informe dia e horário VIP; para horários flexíveis, descreva sua preferência.';return false;}
       if(!level.value){$('error1-2027').textContent='Informe seu conhecimento atual de espanhol.';return false;}}
     if(n===2&&!$('paymentAck2027').checked){$('error2-2027').textContent='Leia as informações sobre contrato e pagamento e marque a confirmação de ciência.';return false;}
-    if(n===3){const fields=['fullName2027','email2027','phone2027','city2027'].map($);const bad=fields.find(el=>!el.value.trim()||!el.checkValidity());if(bad){$('error3-2027').textContent='Preencha nome, e-mail, WhatsApp e cidade corretamente.';bad.focus();return false;}}
+    if(n===3){
+      const fields=['fullName2027','cpf2027','birthDate2027','email2027','phone2027','zip2027','street2027','number2027','district2027','city2027','state2027'].map($);
+      const bad=fields.find(el=>!el.value.trim()||!el.checkValidity());
+      if(bad){$('error3-2027').textContent='Preencha todos os campos obrigatórios do contrato e revise o formato informado.';bad.focus();return false;}
+      if(!cpfIsValid($('cpf2027').value)){$('error3-2027').textContent='Confira o CPF: o número informado é inválido.';$('cpf2027').focus();return false;}
+      if(!/^\d{5}-?\d{3}$/.test($('zip2027').value)){$('error3-2027').textContent='Informe um CEP brasileiro válido com 8 dígitos.';$('zip2027').focus();return false;}
+      if(!/^[A-Za-z]{2}$/.test($('state2027').value.trim())){$('error3-2027').textContent='Informe a UF com duas letras, por exemplo SP.';$('state2027').focus();return false;}
+      const birth=$('birthDate2027').value, today=new Date();today.setHours(0,0,0,0);
+      const when=new Date(birth+'T12:00:00');
+      if(!birth||!Number.isFinite(when.getTime())||when>today||when.getFullYear()<1900){$('error3-2027').textContent='Confira a data de nascimento informada.';$('birthDate2027').focus();return false;}
+    }
     if(n===4&&!$('consent2027').checked){$('error4-2027').textContent='Precisamos da autorização para enviar os dados à Academia.';return false;}
     return true;
   }
-  function review(){const rows=[['Treinamento',programs[program.value]],['Modalidade',modes[mode.value]],['Horário / agenda',scheduleInfo()],['Período geral','01/02 a 03/07/2027'],['Nível declarado',level.value],['Condição comercial',investment()],['Acesso ao pagamento','Instruções Pix disponibilizadas na página; recebimento ainda não verificado'],['Nome',str('fullName2027')],['E-mail',str('email2027')],['WhatsApp',str('phone2027')],['Cidade',str('city2027')]];$('review2027').innerHTML=rows.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join('');}
+  function review(){const rows=[['Treinamento',programs[program.value]],['Modalidade',modes[mode.value]],['Horário / agenda',scheduleInfo()],['Período geral','01/02 a 03/07/2027'],['Nível declarado',level.value],['Condição comercial',investment()],['Acesso ao pagamento','Instruções Pix disponibilizadas na página; recebimento ainda não verificado'],['Nome',str('fullName2027')],['CPF (parcial)',str('cpf2027').replace(/^(\d{3})\.\d{3}\.\d{3}-(\d{2})$/,'$1.***.***-$2')],['Nascimento',str('birthDate2027').split('-').reverse().join('/')],['E-mail',str('email2027')],['WhatsApp',str('phone2027')],['Endereço',`${str('street2027')}, ${str('number2027')}${str('complement2027')?', '+str('complement2027'):''} · ${str('district2027')} · ${str('city2027')}/${str('state2027')} · CEP ${str('zip2027')}`]];$('review2027').innerHTML=rows.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join('');}
   form.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>{const n=+b.dataset.next;if(!validate(n-1))return;if(n===4)review();stage(n);}));
   form.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>stage(+b.dataset.back)));
   mode.addEventListener('change',()=>{paymentOpened=false;$('paymentAck2027').checked=false;updateMode()});
