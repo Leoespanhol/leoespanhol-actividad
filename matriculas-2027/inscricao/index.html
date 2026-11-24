@@ -396,11 +396,11 @@ footer{padding:28px 0 40px;color:#788295;font-size:13px}.footer{border-top:1px s
 <p>Selecione a formação e o formato. Para as turmas, escolha um dia fixo da semana e o período. O VIP pode sugerir uma agenda personalizada.</p>
 <div class="enroll-27-row">
 <div class="enroll-27-field"><label for="enrollProgram2027">Treinamento *</label><select id="enrollProgram2027" required="">
-<option value="base">Base Profissional · A1–A2</option><option value="corp">Entorno Corporativo · B1–B2</option><option value="intl1">Experiência Internacional I · A1–A2</option><option value="intl2">Experiência Internacional II · B1</option><option value="intl3">Experiência Internacional III · B2</option>
+<option value="" disabled selected>Escolha seu treinamento</option><option value="base">Base Profissional · A1–A2</option><option value="corp">Entorno Corporativo · B1–B2</option><option value="intl1">Experiência Internacional I · A1–A2</option><option value="intl2">Experiência Internacional II · B1</option><option value="intl3">Experiência Internacional III · B2</option>
 </select></div>
-<div class="enroll-27-field"><label for="enrollMode2027">Modalidade *</label><select id="enrollMode2027" required=""><option value="group">Turma em grupo · 1h40 por encontro</option><option value="vip1">VIP individual · sessão de 1 hora</option><option value="vip140">VIP individual · sessão de 1h40</option></select></div>
+<div class="enroll-27-field"><label for="enrollMode2027">Modalidade *</label><select id="enrollMode2027" required=""><option value="" disabled selected>Selecione Grupo ou VIP</option><option value="group">Turma em grupo · 1h40 por encontro</option><option value="vip1">VIP individual · sessão de 1 hora</option><option value="vip140">VIP individual · sessão de 1h40</option></select></div>
 </div>
-<div id="groupOptions2027">
+<div id="groupOptions2027" hidden>
 <div class="enroll-27-row">
 <div class="enroll-27-field"><label for="enrollGroupDay2027">Dia fixo da turma *</label><select id="enrollGroupDay2027"><option value="">Selecione o dia da semana</option><option value="mon">Segunda-feira</option><option value="tue">Terça-feira</option><option value="wed">Quarta-feira</option><option value="thu">Quinta-feira</option><option value="fri">Sexta-feira</option><option value="sat">Sábado</option><option value="other">Quero sugerir outro horário</option></select></div>
 <div class="enroll-27-field"><label for="enrollGroup2027">Faixa horária da turma *</label><select disabled="" id="enrollGroup2027"><option value="">Escolha primeiro o dia</option></select></div>
@@ -423,6 +423,7 @@ footer{padding:28px 0 40px;color:#788295;font-size:13px}.footer{border-top:1px s
 <div class="enroll-27-row">
 <div class="enroll-27-field"><label for="enrollLevel2027">Seu espanhol hoje *</label><select id="enrollLevel2027" required=""><option value="">Selecione</option><option>Vou começar do zero</option><option>A1–A2 · Básico</option><option>B1 · Intermediário</option><option>B2 ou superior</option><option>Não sei meu nível</option></select></div>
 <div class="enroll-27-field"><label for="enrollPay2027">Como deseja pagar? *</label><select id="enrollPay2027" required>
+<option value="" disabled selected>Selecione a forma de pagamento</option>
 <option value="pix">Pix · pagar a 1ª parcela</option>
 <option value="pix6">Pix parcelado · 6 parcelas mensais</option>
 <option value="avista">Pix à vista · pagamento único (5% de desconto)</option>
@@ -441,7 +442,7 @@ footer{padding:28px 0 40px;color:#788295;font-size:13px}.footer{border-top:1px s
  <p class="mat-pix-eyebrow">PAGAMENTO DE TREINAMENTO • ACADEMIA LEOESPANHOL</p>
  <h4>Seu Pix para a matrícula</h4>
  <p class="mat-pix-desc">A chave, o QR Code e o Pix Copia e Cola correspondem ao valor indicado abaixo.</p>
- <div class="mat-pix-amount"><span>Valor para esta transferência</span><strong id="matPixAmount2027">R$ 240,00</strong></div>
+ <div class="mat-pix-amount"><span>Valor para esta transferência</span><strong id="matPixAmount2027">Selecione sua opção</strong></div>
  <p class="mat-pix-keylabel">Chave Pix · CNPJ</p>
  <p class="mat-pix-key">54.747.133/0001-55</p>
  <button type="button" class="mat-pix-action" id="matPixCopyKey2027">COPIAR CHAVE PIX</button>
@@ -499,11 +500,11 @@ footer{padding:28px 0 40px;color:#788295;font-size:13px}.footer{border-top:1px s
 </div>
 <aside aria-live="polite" class="enroll-27-side">
 <div class="eyebrow" style="color:#e9ce8b">Seu plano 2027</div><h3>Resumo da formação</h3>
-<div class="minor">Treinamento</div><div class="summary-val" id="asideProgram2027">Base Profissional</div>
-<div class="minor">Modalidade</div><div class="summary-val" id="asideMode2027">Grupo</div>
-<div class="minor">Turma / disponibilidade</div><div class="summary-val" id="asideSchedule2027">Selecione seu horário</div>
-<div class="minor">Investimento</div><div class="summary-price" id="asidePrice2027">1ª parcela de R$ 240,00 na matrícula via Pix</div>
-<div class="minor" style="margin-top:8px">Valores da tabela comercial anterior, sujeitos à aprovação final de 2027. Período institucional: 01/02 a 03/07/2027. Dias e horários de acordo com a turma escolhida.</div>
+<div class="minor">Treinamento</div><div class="summary-val" id="asideProgram2027">Escolha seu treinamento</div>
+<div class="minor">Modalidade</div><div class="summary-val" id="asideMode2027">Selecione Grupo ou VIP</div>
+<div class="minor">Turma / disponibilidade</div><div class="summary-val" id="asideSchedule2027">Escolha a modalidade para consultar os horários</div>
+<div class="minor">Investimento</div><div class="summary-price" id="asidePrice2027">Definido conforme a modalidade e a forma de pagamento</div>
+<div class="minor" style="margin-top:8px">Semestre institucional: 01/02 a 03/07/2027. O resumo será atualizado automaticamente conforme suas escolhas.</div>
 <a href="https://calendar.app.google/JZ53VrKgD71CvQoB7" rel="noopener noreferrer" target="_blank">Agendar conversa e diagnóstico</a>
 <a href="https://wa.me/5511943702002?text=Ol%C3%A1%21%20Quero%20conhecer%20as%20matr%C3%ADculas%20da%20Leoespanhol%202027." rel="noopener noreferrer" target="_blank">WhatsApp da Academia</a>
 </aside>
@@ -641,36 +642,60 @@ currentLang=detectInitialLang();translateStatic(currentLang);
     $('groupOtherWrap2027').hidden=d!=='other'; update();
   }
   function renderVipSlots(){const old=vipTime.value;const opts=mode.value==='vip1'?vip1:vip140;vipTime.innerHTML='<option value="">Selecione</option>'+opts.map(([k,label])=>`<option value="${k}">${label}</option>`).join('');if(opts.some(([k])=>k===old))vipTime.value=old;update();}
-  function updateMode(){const isGroup=mode.value==='group';$('groupOptions2027').hidden=!isGroup;$('vipOptions2027').hidden=isGroup;renderVipSlots();update();}
+  function updateMode(){const isGroup=mode.value==='group',isVip=mode.value==='vip1'||mode.value==='vip140';$('groupOptions2027').hidden=!isGroup;$('vipOptions2027').hidden=!isVip;renderVipSlots();update();}
   function scheduleInfo(){
-    if(mode.value==='group'){
+     if(!mode.value)return 'Escolha Grupo ou VIP para consultar os horários';
+     if(mode.value==='group'){
       if(day.value==='other')return `Turma sugerida · ${str('groupOther2027')||'horário a combinar'} · início e término a definir`;
       if(!day.value||!slot.value)return 'Selecione dia e faixa horária da turma';
       const c=calendar[day.value],label=(day.options[day.selectedIndex]||{}).textContent||day.value;
       return `${label}, ${slot.options[slot.selectedIndex].textContent} · início ${c.start} · término ${c.end}`;
     }
-    const d=vipDay.value||'dia a combinar', t=vipTime.options[vipTime.selectedIndex]?.textContent||'horário a combinar';
-    return `VIP · ${d} · ${vipTime.value?t:'horário a combinar'}${vipDate.value?' · data sugerida '+vipDate.value.split('-').reverse().join('/'):''} · ${vipFlexible.value}${str('enrollVipNotes2027')?' · observação: '+str('enrollVipNotes2027'):''}`;
+    if(!vipDay.value||!vipTime.value)return 'Selecione dia e horário VIP ou sugira uma agenda flexível';
+     const d=vipDay.value, t=vipTime.options[vipTime.selectedIndex]?.textContent||'horário a combinar';
+     return `VIP · ${d} · ${vipTime.value?t:'horário a combinar'}${vipDate.value?' · data sugerida '+vipDate.value.split('-').reverse().join('/'):''} · ${vipFlexible.value}${str('enrollVipNotes2027')?' · observação: '+str('enrollVipNotes2027'):''}`;
   }
-  function investment(){const p=prices[mode.value];return pay.value==='avista'?`Pix à vista: ${brl(Math.round(p.install*6*0.95*100)/100)} (5% de desconto)`:`1ª parcela de ${brl(p.install)} na matrícula via Pix`;
-  }
+  function investment(){
+     if(!mode.value||!pay.value)return 'Definido conforme a modalidade e a forma de pagamento';
+     const p=prices[mode.value];
+     return pay.value==='avista'?`Pix à vista: ${brl(Math.round(p.install*6*0.95*100)/100)} (5% de desconto)`:`1ª parcela de ${brl(p.install)} na matrícula via Pix`;
+   }
   function update(){
-    $('asideProgram2027').textContent=programs[program.value];$('asideMode2027').textContent=modes[mode.value];
-    $('asideSchedule2027').textContent=scheduleInfo();$('asidePrice2027').textContent=investment();$('enrollPayDescription2027').textContent=pay.value==='avista'?'Pix à vista: pagamento único com 5% de desconto. Confirme as condições do contrato antes de pagar.':pay.value==='pix'?'Pix: pague a primeira parcela pela chave, QR Code ou Pix Copia e Cola; as demais seguem o contrato.':'Pix parcelado: a primeira parcela é paga agora por Pix; as outras cinco são mensais, conforme contrato.';
+    $('asideProgram2027').textContent=programs[program.value]||'Escolha seu treinamento';
+     $('asideMode2027').textContent=modes[mode.value]||'Selecione Grupo ou VIP';
+     $('asideSchedule2027').textContent=scheduleInfo();
+     $('asidePrice2027').textContent=investment();
+     $('enrollPayDescription2027').textContent=pay.value==='avista'?'Pix à vista: pagamento único com 5% de desconto. Confirme as condições do contrato antes de pagar.':pay.value==='pix'?'Pix: pague a primeira parcela pela chave, QR Code ou Pix Copia e Cola; as demais seguem o contrato.':'Pix parcelado: a primeira parcela é paga agora por Pix; as outras cinco são mensais, conforme contrato.';
     let html='';
     if(mode.value==='group'&&calendar[day.value]&&slot.value){let c=calendar[day.value];html=`<strong>${esc(weekdays[day.value])} · ${esc(slot.options[slot.selectedIndex].textContent)}</strong><br>Primeira aula prevista: <strong>${c.start}</strong> · Último encontro previsto: <strong>${c.end}</strong>.<br>Semestre institucional: <strong>01/02 a 03/07/2027</strong>.<br>Previsão de aproximadamente 20 encontros no semestre, conforme o calendário da turma.${c.holiday?`<br>Pausa/feriados e ajustes considerados: ${esc(c.holiday)}.`:''}<br><small>Datas-base sujeitas à homologação, feriados locais e ajustes formalizados no contrato.</small>`;}
     else if(mode.value==='group'&&day.value==='other')html='Envie sua proposta de horário. A Academia verificará a possibilidade de abertura de turma e informará datas de início e conclusão antes de contratar.';
-    else if(mode.value==='group')html='Escolha primeiro o dia da semana e depois a faixa horária para visualizar as datas do seu percurso entre 01/02 e 03/07/2027.';
-    else html='VIP: você pode escolher dia fixo, uma data de início no calendário ou solicitar agenda flexível. Datas, número de encontros e carga horária serão definidos no contrato individual antes da confirmação.';
-    $('calendarExplanation2027').innerHTML=html;
-    $('paymentBreakdown2027').innerHTML=`<span class="payment-badge">${esc(pay.options[pay.selectedIndex].textContent)}</span><br><strong>${esc(programs[program.value])}</strong><br>${esc(modes[mode.value])}<br><small>${esc(scheduleInfo())}</small><hr><strong>${esc(investment())}</strong><br><small>O contrato apresentará preço global, vencimentos, condições de cancelamento e disponibilidade antes da cobrança.</small>`;
+         else if(mode.value==='group')html='Escolha primeiro o dia da semana e depois a faixa horária para visualizar as datas do seu percurso entre 01/02 e 03/07/2027.';
+     else if(mode.value)html='VIP: você pode escolher dia fixo, uma data de início no calendário ou solicitar agenda flexível. Datas, número de encontros e carga horária serão definidos no contrato individual antes da confirmação.';
+     else html='Selecione Grupo ou VIP para consultar os horários e a duração da formação.';
+     $('calendarExplanation2027').innerHTML=html;
+     if(program.value&&mode.value&&pay.value){
+       $('paymentBreakdown2027').innerHTML=`<span class="payment-badge">${esc(pay.options[pay.selectedIndex].textContent)}</span><br><strong>${esc(programs[program.value])}</strong><br>${esc(modes[mode.value])}<br><small>${esc(scheduleInfo())}</small><hr><strong>${esc(investment())}</strong><br><small>O contrato apresentará preço global, vencimentos, condições de cancelamento e disponibilidade antes da cobrança.</small>`;
+     }else{
+       $('paymentBreakdown2027').textContent='Selecione treinamento, modalidade e forma de pagamento para consultar o investimento.';
+     }
     updatePixDisplay();
   }
-  function selectedAmount(){const n=prices[mode.value].install;return pay.value==='avista'?Math.round(n*6*.95*100)/100:n;}
+  function selectedAmount(){
+     if(!mode.value||!pay.value||!prices[mode.value])return null;
+     const n=prices[mode.value].install;
+     return pay.value==='avista'?Math.round(n*6*.95*100)/100:n;
+   }
   function updatePixDisplay(){
-    const key=selectedAmount().toFixed(2), info=pixVariants[key];
-    if(!info)return;
-    $('matPixAmount2027').textContent=brl(selectedAmount());
+    const amount=selectedAmount();
+     if(amount===null){
+       $('matPixAmount2027').textContent='Selecione sua opção';
+       $('matPixPayload2027').value='';
+       $('matPixQr2027').removeAttribute('src');
+       return;
+     }
+     const key=amount.toFixed(2), info=pixVariants[key];
+     if(!info)return;
+     $('matPixAmount2027').textContent=brl(amount);
     $('matPixPayload2027').value=info.payload;
     $('matPixQr2027').src=info.img;
     $('matPixFeedback2027').textContent='';
@@ -696,7 +721,11 @@ currentLang=detectInitialLang();translateStatic(currentLang);
   $('state2027').addEventListener('input',function(){this.value=this.value.replace(/[^a-zA-Z]/g,'').slice(0,2).toUpperCase();});
   function validate(n){
     $('error'+n+'-2027').textContent='';
-    if(n===1){if(mode.value==='group'&&(!day.value||(day.value==='other'&&!str('groupOther2027'))||(day.value!=='other'&&!slot.value))){$('error1-2027').textContent='Escolha o dia e o horário da turma ou descreva sua sugestão.';return false;}
+    if(n===1){
+       if(!program.value){$('error1-2027').textContent='Escolha o treinamento.';program.focus();return false;}
+       if(!mode.value){$('error1-2027').textContent='Selecione Grupo ou VIP.';mode.focus();return false;}
+       if(!pay.value){$('error1-2027').textContent='Selecione a forma de pagamento.';pay.focus();return false;}
+       if(mode.value==='group'&&(!day.value||(day.value==='other'&&!str('groupOther2027'))||(day.value!=='other'&&!slot.value))){$('error1-2027').textContent='Escolha o dia e o horário da turma ou descreva sua sugestão.';return false;}
       if(mode.value!=='group'&&(!vipDay.value||!vipTime.value||((vipDay.value==='A combinar'||vipTime.value==='flex')&&!str('enrollVipNotes2027')))){$('error1-2027').textContent='Informe dia e horário VIP; para horários flexíveis, descreva sua preferência.';return false;}
       if(!level.value){$('error1-2027').textContent='Informe seu conhecimento atual de espanhol.';return false;}}
     if(n===2&&!$('paymentAck2027').checked){$('error2-2027').textContent='Leia as informações sobre contrato e pagamento e marque a confirmação de ciência.';return false;}
