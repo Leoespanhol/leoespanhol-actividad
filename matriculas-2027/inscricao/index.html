@@ -368,9 +368,7 @@ footer{padding:28px 0 40px;color:#788295;font-size:13px}.footer{border-top:1px s
 </div>
 <div class="enroll-27-shell">
 <div class="enroll-27-main">
-<form accept-charset="UTF-8" action="https://formsubmit.co/contato@leoespanhol.com.br" id="enrollmentForm2027" method="POST" novalidate="">
-<input name="_subject" type="hidden" value="Leoespanhol 2027 | Formalização de matrícula"/>
-<input name="_template" type="hidden" value="table"/>
+<form accept-charset="UTF-8" action="https://script.google.com/macros/s/AKfycbztTssizjjBFd8_v5BDPFMuXJiPN6UIePowQQ5kTTmBre0L-7Lp59iDIWRuGenJY3pA/exec" id="enrollmentForm2027" method="POST" novalidate="">
 <input name="Semestre" type="hidden" value="Primeiro semestre 2027: 01/02/2027 a 03/07/2027"/>
 <input id="sendProgram2027" name="Treinamento escolhido" type="hidden"/>
 <input id="sendMode2027" name="Modalidade" type="hidden"/>
@@ -380,6 +378,19 @@ footer{padding:28px 0 40px;color:#788295;font-size:13px}.footer{border-top:1px s
 <input id="sendLevel2027" name="Nível declarado" type="hidden"/>
 <input id="sendGoal2027" name="Objetivo do aluno" type="hidden"/>
 <input id="sendCheckout2027" name="Etapa do pagamento" type="hidden"/>
+<input id="matRequestId2027" name="request_id" type="hidden"/>
+<input id="matProgramCode2027" name="program_code" type="hidden"/>
+<input id="matModeCode2027" name="mode_code" type="hidden"/>
+<input id="matPaymentCode2027" name="payment_code" type="hidden"/>
+<input id="matConsent2027" name="consentimento" type="hidden"/>
+<input id="matDayName2027" name="day_name" type="hidden"/>
+<input id="matSlotLabel2027" name="slot_label" type="hidden"/>
+<input id="matVipDay2027" name="vip_day" type="hidden"/>
+<input id="matVipTime2027" name="vip_time" type="hidden"/>
+<input id="matVipDate2027" name="vip_date" type="hidden"/>
+<input id="matVipFlexible2027" name="vip_flexible" type="hidden"/>
+<input id="matScheduleNotes2027" name="schedule_notes" type="hidden"/>
+<input id="matSourcePage2027" name="source_page" type="hidden"/>
 <div class="enroll-27-panel active" data-stage="1">
 <h3>1. Escolha seu treinamento e horário</h3>
 <p>Selecione a formação e o formato. Para as turmas, escolha um dia fixo da semana e o período. O VIP pode sugerir uma agenda personalizada.</p>
@@ -480,9 +491,9 @@ footer{padding:28px 0 40px;color:#788295;font-size:13px}.footer{border-top:1px s
 <p>Confira treinamento, turma, datas, investimento e seus dados. Você receberá as orientações para assinatura eletrônica do contrato. O envio deste formulário não significa que o pagamento foi confirmado.</p>
 <div class="enroll-27-table"><table class="enroll-27-summary"><tbody id="review2027"></tbody></table></div>
 <div class="enroll-27-status"><strong>Como termina a matrícula?</strong> A Academia confere o pagamento e a disponibilidade da turma, prepara o contrato para assinatura eletrônica e, após a formalização, envia a confirmação e as boas-vindas. A escolha de horário sozinha não bloqueia uma vaga.</div>
-<label class="enroll-27-check"><input id="consent2027" required="" type="checkbox"/><span>Autorizo o uso dos meus dados para preparar o contrato e organizar minha matrícula. Estou ciente de que nome, CPF, nascimento, endereço e contato serão transmitidos à Leoespanhol pelo serviço de formulários FormSubmit, por conexão HTTPS. A matrícula só será confirmada após contrato, pagamento e abertura da turma.</span></label>
+<label class="enroll-27-check"><input id="consent2027" required="" type="checkbox"/><span>Autorizo o uso dos meus dados para preparar o contrato e organizar minha matrícula. Estou ciente de que nome, CPF, nascimento, endereço e contato serão enviados por conexão HTTPS ao Google Apps Script da Leoespanhol para registro em uma planilha privada no Google Sheets, com acesso restrito à equipe autorizada. A matrícula só será confirmada após contrato, pagamento e abertura da turma.</span></label>
 <div class="enroll-27-actions"><button class="enroll-27-outline" data-back="3" type="button">Corrigir dados</button><button class="enroll-27-primary" id="sendEnrollment2027" type="submit">Enviar dados para meu contrato</button></div><span class="enroll-27-msg" id="error4-2027" role="alert"></span>
-<p class="enroll-27-privacy">Os dados pessoais e contratuais deste cadastro são enviados à Leoespanhol via FormSubmit (serviço terceirizado) para preparação do contrato. Não são incorporados ao Pix nem aos links de WhatsApp. O envio não equivale à assinatura, ao pagamento ou à vaga confirmada.</p>
+<p class="enroll-27-privacy">Seus dados são encaminhados pelo Google Apps Script à base privada de Matrículas 2027 no Google Sheets, para análise da solicitação e elaboração do contrato. Não são incluídos no Pix nem em mensagens de WhatsApp. O envio não equivale à assinatura, à confirmação do pagamento ou à reserva automática de vaga.</p>
 </div>
 </form>
 </div>
@@ -712,9 +723,33 @@ currentLang=detectInitialLang();translateStatic(currentLang);
   [vipDay,vipTime,vipDate,vipFlexible,vipNotes,pay,$('groupOther2027'),level,$('enrollGoal2027')].forEach(e=>e.addEventListener(e.tagName==='TEXTAREA'?'input':'change',()=>{if(e===pay){paymentOpened=false;$('paymentAck2027').checked=false;}update()}));
   function waText(){return `Olá! Quero receber instruções de pagamento para a matrícula Leoespanhol 2027.\nTreinamento: ${programs[program.value]}\nModalidade: ${modes[mode.value]}\nDia/horário: ${scheduleInfo()}\nPagamento: ${pay.options[pay.selectedIndex].textContent}\nInvestimento: ${investment()}`;}
   $('payHelp2027').addEventListener('click',()=>{window.open('https://wa.me/5511943702002?text='+encodeURIComponent(waText()),'_blank','noopener,noreferrer');});
+  // Integração direta com a Base Oficial de Matrículas 2027 (Apps Script).
+  // A submissão usa POST de formulário HTML: não envia dados em URL nem depende de CORS/fetch.
+  // Identificador único estável durante a sessão, para deduplicação no Apps Script.
+  let requestId2027='LEO27-'+(
+    (typeof crypto!=='undefined' && typeof crypto.randomUUID==='function')
+      ? crypto.randomUUID()
+      : Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,14)
+  );
+  $('matRequestId2027').value=requestId2027;
   form.addEventListener('submit',e=>{
     if(!validate(4)){e.preventDefault();return;}
     $('sendProgram2027').value=programs[program.value];$('sendMode2027').value=modes[mode.value];$('sendSchedule2027').value=scheduleInfo();$('sendPrice2027').value=investment();$('sendPay2027').value=pay.options[pay.selectedIndex].textContent;$('sendLevel2027').value=level.value;$('sendGoal2027').value=str('enrollGoal2027');$('sendCheckout2027').value='Pix via chave/QR Code mostrado na landing; pagamento não confirmado automaticamente';
+    // Os nomes dos campos devem coincidir exatamente com e.parameter no Code.gs publicado.
+    $('matRequestId2027').value=requestId2027;
+    $('matProgramCode2027').value=program.value;
+    $('matModeCode2027').value=mode.value;
+    $('matPaymentCode2027').value=pay.value;
+    $('matConsent2027').value=$('consent2027').checked?'SIM':'';
+    const isGroup=mode.value==='group';
+    $('matDayName2027').value=isGroup?(day.options[day.selectedIndex]?.textContent||''):'';
+    $('matSlotLabel2027').value=isGroup?(day.value==='other'?'A combinar':(slot.options[slot.selectedIndex]?.textContent||'')):'';
+    $('matVipDay2027').value=isGroup?'':vipDay.value;
+    $('matVipTime2027').value=isGroup?'':(vipTime.options[vipTime.selectedIndex]?.textContent||'');
+    $('matVipDate2027').value=isGroup?'':vipDate.value;
+    $('matVipFlexible2027').value=isGroup?'':vipFlexible.value;
+    $('matScheduleNotes2027').value=isGroup?str('groupOther2027'):str('enrollVipNotes2027');
+    $('matSourcePage2027').value=location.origin+location.pathname;
     $('sendEnrollment2027').disabled=true;$('sendEnrollment2027').textContent='Enviando dados para o contrato…';
   });
   function openEnrollment(p){if(p){const find=Object.keys(programs).find(k=>programs[k].split(' · ')[0]===p);if(find)program.value=find;}update();stage(1)}
